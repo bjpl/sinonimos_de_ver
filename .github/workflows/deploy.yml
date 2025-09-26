@@ -37,15 +37,13 @@ jobs:
         run: |
           npm run build
           echo "Build complete, checking output directory..."
-          ls -la
           if [ -d "out" ]; then
             echo "Found 'out' directory with static files:"
             ls -la out/
-            echo "Copying public files to out directory..."
-            cp -r public/* out/ 2>/dev/null || true
           else
-            echo "No 'out' directory found, checking for .next directory..."
-            ls -la .next/ 2>/dev/null || echo "No .next directory found"
+            echo "ERROR: No 'out' directory found!"
+            ls -la
+            exit 1
           fi
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
