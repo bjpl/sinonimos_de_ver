@@ -713,7 +713,7 @@
                 <div>
                     <h1>
                         <span style="color: var(--whatsapp);">Hablas</span> Design System
-                        <span class="badge">100+ ejemplos</span>
+                        <span class="badge">50+ ejemplos</span>
                     </h1>
                     <p class="header-subtitle">Sistema de diseño completo con ejemplos interactivos y guías de implementación</p>
                 </div>
@@ -853,7 +853,7 @@
                         <div class="component-title">🔘 Botones</div>
                         <div class="component-meta">Botones interactivos con múltiples variantes</div>
                     </div>
-                    <span class="component-count">12 variantes</span>
+                    <span class="component-count">12 botones</span>
                     <span class="expand-icon">▼</span>
                 </div>
                 <div class="component-variants">
@@ -875,7 +875,7 @@
                         <div class="component-title">🏷️ Tags y Badges</div>
                         <div class="component-meta">Etiquetas de categorización y estado</div>
                     </div>
-                    <span class="component-count">8 variantes</span>
+                    <span class="component-count">10 etiquetas</span>
                     <span class="expand-icon">▼</span>
                 </div>
                 <div class="component-variants">
@@ -889,7 +889,7 @@
                         <div class="component-title">📇 Cards</div>
                         <div class="component-meta">Tarjetas de recursos, grupos y estadísticas</div>
                     </div>
-                    <span class="component-count">15 variantes</span>
+                    <span class="component-count">12 tipos</span>
                     <span class="expand-icon">▼</span>
                 </div>
                 <div class="component-variants">
@@ -1011,8 +1011,16 @@
         const buttons = [
             { name: 'WhatsApp CTA', type: 'primary', code: 'btn-whatsapp', bg: 'var(--whatsapp)' },
             { name: 'Download Primary', type: 'primary', code: 'bg-blue-500', bg: '#3B82F6' },
+            { name: 'Rappi Primary', type: 'primary', code: 'bg-rappi', bg: 'var(--rappi)' },
+            { name: 'Uber Primary', type: 'primary', code: 'bg-uber', bg: 'var(--uber)' },
+            { name: 'Success Button', type: 'primary', code: 'bg-green-500', bg: '#22C55E' },
+            { name: 'Warning Button', type: 'primary', code: 'bg-yellow-500', bg: '#EAB308' },
             { name: 'Downloaded Success', type: 'secondary', code: 'bg-green-100', bg: '#D1FAE5' },
-            { name: 'Cancel Secondary', type: 'secondary', code: 'bg-gray-100', bg: '#F3F4F6' }
+            { name: 'Cancel Secondary', type: 'secondary', code: 'bg-gray-100', bg: '#F3F4F6' },
+            { name: 'Info Secondary', type: 'secondary', code: 'bg-blue-100', bg: '#DBEAFE' },
+            { name: 'Alert Secondary', type: 'secondary', code: 'bg-red-100', bg: '#FEE2E2' },
+            { name: 'Outline Button', type: 'secondary', code: 'border-gray-300', bg: 'white' },
+            { name: 'Text Only', type: 'secondary', code: 'text-blue-600', bg: 'transparent' }
         ];
 
         buttons.forEach(btn => {
@@ -1039,9 +1047,13 @@
             { name: 'Rappi', bg: 'var(--rappi)', color: 'white' },
             { name: 'Uber', bg: 'var(--uber)', color: 'white' },
             { name: 'DiDi', bg: 'var(--didi)', color: 'white' },
+            { name: 'WhatsApp', bg: 'var(--whatsapp)', color: 'white' },
             { name: 'Básico', bg: '#D1FAE5', color: '#065F46' },
             { name: 'Intermedio', bg: '#FEF3C7', color: '#92400E' },
-            { name: 'Offline', bg: '#E9D5FF', color: '#6B21A8' }
+            { name: 'Avanzado', bg: '#DBEAFE', color: '#1E40AF' },
+            { name: 'Offline', bg: '#E9D5FF', color: '#6B21A8' },
+            { name: 'Nuevo', bg: '#FEE2E2', color: '#991B1B' },
+            { name: 'Popular', bg: '#FED7AA', color: '#9A3412' }
         ];
 
         tags.forEach(tag => {
@@ -1061,9 +1073,18 @@
         // Render Cards (simplified examples)
         const cardsGrid = document.getElementById('cards-grid');
         const cards = [
-            { name: 'Resource Card', desc: 'Card para recursos descargables' },
-            { name: 'WhatsApp Group', desc: 'Invitación a grupo de WhatsApp' },
-            { name: 'Stat Card', desc: 'Tarjeta de estadísticas' }
+            { name: 'Resource Card', desc: 'PDF descargable con frases' },
+            { name: 'WhatsApp Group', desc: 'Invitación a grupo comunitario' },
+            { name: 'Stat Card - Total', desc: 'Contador de recursos totales' },
+            { name: 'Stat Card - Users', desc: 'Usuarios activos en la plataforma' },
+            { name: 'Audio Resource', desc: 'Recurso de audio para pronunciación' },
+            { name: 'Video Tutorial', desc: 'Tutorial en video paso a paso' },
+            { name: 'Quiz Card', desc: 'Evaluación interactiva' },
+            { name: 'Download Progress', desc: 'Estado de descarga en progreso' },
+            { name: 'Community Card', desc: 'Información de la comunidad' },
+            { name: 'Achievement Badge', desc: 'Insignia de logro completado' },
+            { name: 'Level Progress', desc: 'Progreso por nivel' },
+            { name: 'Category Card', desc: 'Tarjeta de categoría temática' }
         ];
 
         cards.forEach(cardType => {
