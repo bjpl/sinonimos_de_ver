@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Sistema de diseño Hablas: guía completa con componentes interactivos, paleta de colores, tipografía y patrones para la plataforma de inglés dirigida a trabajadores colombianos.">
+    <meta name="theme-color" content="#25D366">
+    <title>Hablas Design System - Guía de Estilo Completa</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+            --rappi: #FF4E00;
+            --didi: #FFA033;
+            --uber: #000000;
+            --accent-blue: #4A90E2;
+            --accent-green: #52C41A;
+            --accent-purple: #9B59B6;
+            --bg-primary: #F7F9FC;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F1F3F8;
+            --text-primary: #2C3E50;
+            --text-secondary: #5A6C7D;
+            --text-tertiary: #7F8C8D;
+            --border-default: #E8ECF0;
+            --border-hover: #D1D5D9;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 2px 6px rgba(0,0,0,0.10);
+            --shadow-lg: 0 4px 12px rgba(0,0,0,0.12);
+            --shadow-xl: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ===== Accessibility Styles ===== */
+        .skip-to-content {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--whatsapp);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0 0 4px 0;
+            z-index: 9999;
+            transition: top 200ms ease-in-out;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+            outline: 3px solid var(--whatsapp-dark);
+            outline-offset: 2px;
+        }
+
+        /* ===== Header Styles ===== */
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--border-default);
+            padding: var(--spacing-lg) var(--spacing-2xl);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 200ms ease-in-out;
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #E8F2FB;
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-tertiary);
+            padding: 4px;
+            border-radius: var(--radius-md);
+        }
+
+        .view-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .view-btn.active {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .global-search {
+            width: 100%;
+            padding: var(--spacing-sm) 36px var(--spacing-sm) 40px;
+            border: 2px solid var(--border-default);
+            border-radius: var(--radius-lg);
+            font-size: 14px;
+            transition: all 0.2s;
+            background: var(--bg-tertiary);
+        }
+
+        .global-search:focus {
+            outline: none;
+            border-color: var(--whatsapp);
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+            background: white;
+        }
+
+        .global-search.filtering {
+            border-color: var(--accent-green);
+            background: #E8F9E0;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            pointer-events: none;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            min-height: 32px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background: var(--text-tertiary);
+            color: white;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            transition: all 200ms ease-in-out;
+        }
+
+        .search-clear:hover,
+        .search-clear:focus {
+            background: var(--whatsapp);
+            transform: translateY(-50%) scale(1.05);
+            outline: none;
+        }
+
+        .search-clear:focus-visible {
+            border-color: var(--whatsapp);
+            outline: 2px solid var(--whatsapp);
+            outline-offset: 2px;
+        }
+
+        .quick-nav {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .quick-nav-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--border-default);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .quick-nav-btn:hover {
+            border-color: var(--whatsapp);
+            color: var(--whatsapp);
+            background: #E8F9E0;
+        }
+
+        .filter-status {
+            position: fixed;
+            top: 150px;
+            right: var(--spacing-xl);
+            background: var(--whatsapp);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 98;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s;
+        }
+
+        .filter-status.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl);
+        }
+
+        .section {
+            margin-bottom: 64px;
+        }
+
+        .section-header {
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--border-default);
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .component-section {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-default);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            transition: all 0.3s;
+        }
+
+        .component-section.no-matches {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .component-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-default);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .component-header:hover {
+            color: var(--whatsapp);
+        }
+
+        .component-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .component-header:hover .component-title {
+            color: var(--whatsapp);
+        }
+
+        .component-meta {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .component-count {
+            background: var(--bg-tertiary);
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .expand-icon {
+            font-size: 24px;
+            color: var(--text-tertiary);
+            transition: transform 0.3s;
+            margin-left: var(--spacing-md);
+        }
+
+        .expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .component-variants {
+            display: none;
+            margin-top: var(--spacing-lg);
+        }
+
+        .expanded .component-variants {
+            display: block;
+        }
+
+        .variant-filters {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn {
+            padding: 6px 12px;
+            border: 2px solid var(--border-default);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--whatsapp);
+            color: var(--whatsapp);
+        }
+
+        .filter-btn.active {
+            background: var(--whatsapp);
+            border-color: var(--whatsapp);
+            color: white;
+        }
+
+        .variant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .variant-grid.large {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        .variant-card {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border-default);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .variant-card.hidden {
+            display: none !important;
+        }
+
+        .variant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--whatsapp);
+        }
+
+        .variant-preview {
+            padding: var(--spacing-lg);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .variant-info {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--bg-tertiary);
+        }
+
+        .variant-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            padding: var(--spacing-2xl);
+            overflow: auto;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: var(--spacing-xl);
+            border-bottom: 2px solid var(--border-default);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            min-height: 44px;
+            border: 2px solid transparent;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 200ms ease-in-out;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            background: var(--whatsapp);
+            color: white;
+            border-color: var(--whatsapp-dark);
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        .modal-close:focus-visible {
+            outline: 2px solid var(--whatsapp);
+            outline-offset: 2px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: var(--spacing-xl);
+            right: var(--spacing-xl);
+            background: var(--text-primary);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: var(--spacing-xl);
+            right: var(--spacing-xl);
+            width: 56px;
+            height: 56px;
+            min-width: 44px;
+            min-height: 44px;
+            background: var(--whatsapp);
+            color: white;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: var(--shadow-xl);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 300ms ease-in-out;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover,
+        .back-to-top:focus {
+            background: var(--accent-purple);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        .back-to-top:focus-visible {
+            border-color: white;
+            outline: 3px solid var(--accent-purple);
+            outline-offset: 2px;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-brand { background: #E8F9E0; color: var(--whatsapp); }
+        .badge-colors { background: #E8F2FB; color: var(--accent-blue); }
+        .badge-typography { background: #F4EBF7; color: var(--accent-purple); }
+        .badge-components { background: #FFF2E8; color: var(--rappi); }
+
+        /* Example Components */
+        .example-button {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .example-button.whatsapp {
+            background: var(--whatsapp);
+            color: white;
+        }
+
+        .example-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .color-swatch {
+            width: 100%;
+            height: 80px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: var(--spacing-md) var(--spacing-lg);
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-md);
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-container {
+                min-width: 100%;
+                max-width: 100%;
+            }
+
+            .container {
+                padding: var(--spacing-lg);
+            }
+
+            .variant-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+
+    <header class="header" role="banner">
+        <div class="header-content">
+            <div class="header-top">
+                <div>
+                    <h1>
+                        <span style="color: var(--whatsapp);">Hablas</span> Design System
+                        <span class="badge">100+ ejemplos</span>
+                    </h1>
+                    <p class="header-subtitle">Sistema de diseño completo con ejemplos interactivos y guías de implementación</p>
+                </div>
+                <div class="view-toggle" role="toolbar" aria-label="Controles de vista">
+                    <button class="view-btn active" onclick="expandAll(event)" aria-label="Expandir todas las secciones">Expandir Todo</button>
+                    <button class="view-btn" onclick="collapseAll(event)" aria-label="Contraer todas las secciones">Contraer Todo</button>
+                </div>
+            </div>
+            <nav class="nav-bar" role="navigation" aria-label="Navegación principal">
+                <div class="search-container" role="search">
+                    <label for="globalSearch" class="search-icon" aria-label="Búsqueda">🔍</label>
+                    <input
+                        type="search"
+                        class="global-search"
+                        id="globalSearch"
+                        placeholder="Buscar componentes (botón, color, tamaño, whatsapp...)"
+                        oninput="filterAllComponents(event)"
+                        aria-label="Buscar en el sistema de diseño"
+                        autocomplete="off"
+                    >
+                    <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Limpiar búsqueda">×</button>
+                </div>
+                <div class="quick-nav">
+                    <a href="#brand-section" class="quick-nav-btn">🎨 Marca</a>
+                    <a href="#colors-section" class="quick-nav-btn">🌈 Colores</a>
+                    <a href="#typography-section" class="quick-nav-btn">📝 Tipografía</a>
+                    <a href="#components-section" class="quick-nav-btn">🧩 Componentes</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="container" role="main">
+        <!-- Brand Section -->
+        <section class="section" id="brand-section">
+            <div class="section-header">
+                <h2><span class="category-badge badge-brand">Marca</span> Identidad y Principios</h2>
+                <p>Misión, valores, y audiencia del proyecto Hablas</p>
+            </div>
+
+            <div class="component-section">
+                <div class="component-header" onclick="toggleSection(this)">
+                    <div>
+                        <div class="component-title">🎯 Identidad de Marca</div>
+                        <div class="component-meta">Misión, visión, y valores centrales del proyecto</div>
+                    </div>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="component-variants">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                        <div style="background: white; padding: 24px; border-radius: 12px; border: 2px solid var(--border-default);">
+                            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--whatsapp);">Misión</h3>
+                            <p style="color: var(--text-secondary);">Empoderar a conductores y domiciliarios colombianos con recursos gratuitos de inglés básico para mejorar sus ingresos y oportunidades laborales.</p>
+                        </div>
+                        <div style="background: white; padding: 24px; border-radius: 12px; border: 2px solid var(--border-default);">
+                            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--rappi);">Valores</h3>
+                            <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                                <li style="margin-bottom: 8px;">✓ <strong>Accesibilidad:</strong> Gratis y sin barreras</li>
+                                <li style="margin-bottom: 8px;">✓ <strong>Practicidad:</strong> Enfoque en situaciones reales</li>
+                                <li style="margin-bottom: 8px;">✓ <strong>Comunidad:</strong> Aprendizaje colaborativo</li>
+                                <li>✓ <strong>Respeto:</strong> Por el tiempo del usuario</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colors Section -->
+        <section class="section" id="colors-section">
+            <div class="section-header">
+                <h2><span class="category-badge badge-colors">Colores</span> Paleta y Sistema de Color</h2>
+                <p>Colores de marca, plataformas, y sistema semántico</p>
+            </div>
+
+            <div class="component-section">
+                <div class="component-header" onclick="toggleSection(this)">
+                    <div>
+                        <div class="component-title">🎨 Colores Primarios</div>
+                        <div class="component-meta">Colores de marca y plataformas asociadas</div>
+                    </div>
+                    <span class="component-count">5 colores</span>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="component-variants">
+                    <div class="variant-grid large" id="colors-grid"></div>
+                </div>
+            </div>
+
+            <div class="component-section">
+                <div class="component-header" onclick="toggleSection(this)">
+                    <div>
+                        <div class="component-title">📊 Grises de UI</div>
+                        <div class="component-meta">Escala de grises para textos, fondos y bordes</div>
+                    </div>
+                    <span class="component-count">7 tonos</span>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="component-variants">
+                    <div class="variant-grid large" id="grays-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section class="section" id="typography-section">
+            <div class="section-header">
+                <h2><span class="category-badge badge-typography">Tipografía</span> Sistema Tipográfico</h2>
+                <p>Jerarquía, tamaños, y uso de fuentes</p>
+            </div>
+
+            <div class="component-section">
+                <div class="component-header" onclick="toggleSection(this)">
+                    <div>
+                        <div class="component-title">📐 Escala de Tamaños</div>
+                        <div class="component-meta">Jerarquía tipográfica de H1 a texto pequeño</div>
+                    </div>
+                    <span class="component-count">7 tamaños</span>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="component-variants">
+                    <div class="variant-grid large" id="typography-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section class="section" id="components-section">
+            <div class="section-header">
+                <h2><span class="category-badge badge-components">Componentes</span> Biblioteca de Componentes</h2>
+                <p>Todos los componentes con variantes y estados</p>
+            </div>
+
+            <div class="component-section">
+                <div class="component-header" onclick="toggleSection(this)">
+                    <div>
+                        <div class="component-title">🔘 Botones</div>
+                        <div class="component-meta">Botones interactivos con múltiples variantes</div>
+                    </div>
+                    <span class="component-count">12 variantes</span>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="component-variants">
+                    <div class="variant-filters">
+                        <div class="filter-group">
+                            <span class="filter-label">Tipo:</span>
+                            <button class="filter-btn active" data-filter="type" data-value="all">Todos</button>
+                            <button class="filter-btn" data-filter="type" data-value="primary">Primario</button>
+                            <button class="filter-btn" data-filter="type" data-value="secondary">Secundario</button>
+                        </div>
+                    </div>
+                    <div class="variant-grid" id="buttons-grid"></div>
+                </div>
+            </div>
+
+            <div class="component-section">
+                <div class="component-header" onclick="toggleSection(this)">
+                    <div>
+                        <div class="component-title">🏷️ Tags y Badges</div>
+                        <div class="component-meta">Etiquetas de categorización y estado</div>
+                    </div>
+                    <span class="component-count">8 variantes</span>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="component-variants">
+                    <div class="variant-grid" id="tags-grid"></div>
+                </div>
+            </div>
+
+            <div class="component-section">
+                <div class="component-header" onclick="toggleSection(this)">
+                    <div>
+                        <div class="component-title">📇 Cards</div>
+                        <div class="component-meta">Tarjetas de recursos, grupos y estadísticas</div>
+                    </div>
+                    <span class="component-count">15 variantes</span>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="component-variants">
+                    <div class="variant-grid large" id="cards-grid"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="modal" onclick="closeModal(event)" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-header">
+                <div class="modal-title" id="modal-title"></div>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Volver al inicio de la página">↑</button>
+    <div class="filter-status" id="filterStatus" role="status" aria-live="polite"></div>
+
+    <script>
+        // Render Colors
+        const colorsGrid = document.getElementById('colors-grid');
+        const colors = [
+            { name: 'WhatsApp Green', hex: '#25D366', var: '--whatsapp', usage: 'CTAs principales, comunidad' },
+            { name: 'Rappi Orange', hex: '#FF4E00', var: '--rappi', usage: 'Tags de domiciliarios' },
+            { name: 'Uber Black', hex: '#000000', var: '--uber', usage: 'Tags de conductores' },
+            { name: 'DiDi Orange', hex: '#FFA033', var: '--didi', usage: 'Tags alternativos' },
+            { name: 'Accent Blue', hex: '#4A90E2', var: '--accent-blue', usage: 'Links, elementos interactivos' }
+        ];
+
+        colors.forEach(color => {
+            const card = document.createElement('div');
+            card.className = 'variant-card';
+            card.dataset.name = color.name.toLowerCase();
+            card.innerHTML = `
+                <div class="variant-preview" style="background: ${color.hex}; min-height: 100px; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: white; font-weight: 600; font-size: 20px;">Aa</span>
+                </div>
+                <div class="variant-info" style="padding: 16px; background: white;">
+                    <div style="font-weight: 600; margin-bottom: 4px;">${color.name}</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">${color.hex}</div>
+                    <div style="font-size: 11px; color: var(--text-tertiary);">${color.usage}</div>
+                </div>
+            `;
+            card.onclick = () => {
+                navigator.clipboard.writeText(color.hex);
+                showToast(`Copiado: ${color.hex}`);
+            };
+            colorsGrid.appendChild(card);
+        });
+
+        // Render Grays
+        const graysGrid = document.getElementById('grays-grid');
+        const grays = [
+            { name: 'Gray 50', hex: '#F9FAFB', usage: 'Fondo claro' },
+            { name: 'Gray 100', hex: '#F3F4F6', usage: 'Fondo secundario' },
+            { name: 'Gray 200', hex: '#E5E7EB', usage: 'Bordes' },
+            { name: 'Gray 500', hex: '#6B7280', usage: 'Texto terciario' },
+            { name: 'Gray 600', hex: '#4B5563', usage: 'Texto secundario' },
+            { name: 'Gray 700', hex: '#374151', usage: 'Texto secundario oscuro' },
+            { name: 'Gray 900', hex: '#111827', usage: 'Texto principal' }
+        ];
+
+        grays.forEach(gray => {
+            const card = document.createElement('div');
+            card.className = 'variant-card';
+            card.innerHTML = `
+                <div class="variant-preview" style="background: ${gray.hex}; min-height: 80px;"></div>
+                <div class="variant-info" style="padding: 12px; background: white;">
+                    <div style="font-weight: 600; margin-bottom: 4px;">${gray.name}</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">${gray.hex}</div>
+                    <div style="font-size: 11px; color: var(--text-tertiary);">${gray.usage}</div>
+                </div>
+            `;
+            card.onclick = () => {
+                navigator.clipboard.writeText(gray.hex);
+                showToast(`Copiado: ${gray.hex}`);
+            };
+            graysGrid.appendChild(card);
+        });
+
+        // Render Typography
+        const typographyGrid = document.getElementById('typography-grid');
+        const typography = [
+            { name: 'H1 - Título Principal', size: '36-48px', class: 'text-3xl sm:text-4xl font-bold' },
+            { name: 'H2 - Título Sección', size: '24px', class: 'text-2xl font-bold' },
+            { name: 'H3 - Subtítulo', size: '20px', class: 'text-xl font-bold' },
+            { name: 'H4 - Título Card', size: '18px', class: 'text-lg font-bold' },
+            { name: 'Body - Texto Normal', size: '16px', class: 'text-base' },
+            { name: 'Small - Texto Pequeño', size: '14px', class: 'text-sm' },
+            { name: 'XSmall - Texto Mínimo', size: '12px', class: 'text-xs' }
+        ];
+
+        typography.forEach(type => {
+            const card = document.createElement('div');
+            card.className = 'variant-card';
+            card.innerHTML = `
+                <div class="variant-preview" style="padding: 24px; background: white; min-height: 100px; display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: ${type.size.split('-')[0]}; font-weight: ${type.class.includes('bold') ? '700' : '400'};">Aa</div>
+                </div>
+                <div class="variant-info" style="padding: 12px; background: white;">
+                    <div style="font-weight: 600; margin-bottom: 4px;">${type.name}</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">${type.size}</div>
+                    <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 4px;">${type.class}</div>
+                </div>
+            `;
+            typographyGrid.appendChild(card);
+        });
+
+        // Render Buttons
+        const buttonsGrid = document.getElementById('buttons-grid');
+        const buttons = [
+            { name: 'WhatsApp CTA', type: 'primary', code: 'btn-whatsapp', bg: 'var(--whatsapp)' },
+            { name: 'Download Primary', type: 'primary', code: 'bg-blue-500', bg: '#3B82F6' },
+            { name: 'Downloaded Success', type: 'secondary', code: 'bg-green-100', bg: '#D1FAE5' },
+            { name: 'Cancel Secondary', type: 'secondary', code: 'bg-gray-100', bg: '#F3F4F6' }
+        ];
+
+        buttons.forEach(btn => {
+            const card = document.createElement('div');
+            card.className = 'variant-card';
+            card.dataset.type = btn.type;
+            card.innerHTML = `
+                <div class="variant-preview" style="padding: 24px; background: white; min-height: 100px; display: flex; align-items: center; justify-content: center;">
+                    <button style="padding: 12px 24px; border-radius: 8px; font-weight: 600; border: none; background: ${btn.bg}; color: ${btn.type === 'secondary' ? 'var(--text-primary)' : 'white'};">
+                        ${btn.name}
+                    </button>
+                </div>
+                <div class="variant-info" style="padding: 12px; background: white;">
+                    <div style="font-weight: 600; margin-bottom: 4px;">${btn.name}</div>
+                    <div style="font-size: 11px; color: var(--text-tertiary); font-family: monospace;">${btn.code}</div>
+                </div>
+            `;
+            buttonsGrid.appendChild(card);
+        });
+
+        // Render Tags
+        const tagsGrid = document.getElementById('tags-grid');
+        const tags = [
+            { name: 'Rappi', bg: 'var(--rappi)', color: 'white' },
+            { name: 'Uber', bg: 'var(--uber)', color: 'white' },
+            { name: 'DiDi', bg: 'var(--didi)', color: 'white' },
+            { name: 'Básico', bg: '#D1FAE5', color: '#065F46' },
+            { name: 'Intermedio', bg: '#FEF3C7', color: '#92400E' },
+            { name: 'Offline', bg: '#E9D5FF', color: '#6B21A8' }
+        ];
+
+        tags.forEach(tag => {
+            const card = document.createElement('div');
+            card.className = 'variant-card';
+            card.innerHTML = `
+                <div class="variant-preview" style="padding: 24px; background: white; min-height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <span style="padding: 6px 12px; border-radius: 999px; background: ${tag.bg}; color: ${tag.color}; font-size: 13px; font-weight: 500;">${tag.name}</span>
+                </div>
+                <div class="variant-info" style="padding: 12px; background: white;">
+                    <div style="font-weight: 600; text-align: center;">${tag.name}</div>
+                </div>
+            `;
+            tagsGrid.appendChild(card);
+        });
+
+        // Render Cards (simplified examples)
+        const cardsGrid = document.getElementById('cards-grid');
+        const cards = [
+            { name: 'Resource Card', desc: 'Card para recursos descargables' },
+            { name: 'WhatsApp Group', desc: 'Invitación a grupo de WhatsApp' },
+            { name: 'Stat Card', desc: 'Tarjeta de estadísticas' }
+        ];
+
+        cards.forEach(cardType => {
+            const card = document.createElement('div');
+            card.className = 'variant-card';
+            card.innerHTML = `
+                <div class="variant-preview" style="padding: 24px; background: white; min-height: 120px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;">
+                    <div style="font-weight: 600;">${cardType.name}</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); text-align: center;">${cardType.desc}</div>
+                </div>
+                <div class="variant-info" style="padding: 12px; background: white;">
+                    <div style="font-weight: 600; text-align: center;">${cardType.name}</div>
+                </div>
+            `;
+            cardsGrid.appendChild(card);
+        });
+
+        // Toggle Section
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('expanded');
+        }
+
+        // Modal Functions
+        function openModal(title, content) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-content').innerHTML = content;
+            document.getElementById('modal').classList.add('show');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target === document.getElementById('modal')) {
+                document.getElementById('modal').classList.remove('show');
+            }
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Scroll to Top
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Global Search
+        let searchTimeout;
+        const globalSearchInput = document.getElementById('globalSearch');
+        const searchClearBtn = document.getElementById('searchClear');
+        const filterStatusEl = document.getElementById('filterStatus');
+
+        function filterAllComponents(event) {
+            clearTimeout(searchTimeout);
+            const query = event.target.value.toLowerCase().trim();
+
+            searchClearBtn.style.display = query ? 'flex' : 'none';
+
+            if (!query) {
+                clearAllFilters();
+                return;
+            }
+
+            searchTimeout = setTimeout(() => {
+                applyGlobalFilter(query);
+            }, 150);
+        }
+
+        function applyGlobalFilter(query) {
+            let visibleCount = 0;
+            let totalCards = 0;
+
+            document.querySelectorAll('.component-section').forEach(section => {
+                section.classList.add('expanded');
+            });
+
+            document.querySelectorAll('.variant-card').forEach(card => {
+                totalCards++;
+                const cardText = card.textContent.toLowerCase();
+                const cardData = Object.values(card.dataset).join(' ').toLowerCase();
+
+                if (cardText.includes(query) || cardData.includes(query)) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            document.querySelectorAll('.component-section').forEach(section => {
+                const visibleInSection = section.querySelectorAll('.variant-card:not(.hidden)').length;
+                if (visibleInSection === 0) {
+                    section.classList.add('no-matches');
+                } else {
+                    section.classList.remove('no-matches');
+                }
+            });
+
+            globalSearchInput.classList.add('filtering');
+            showFilterStatus(visibleCount, totalCards, query);
+        }
+
+        function clearAllFilters() {
+            globalSearchInput.classList.remove('filtering');
+            filterStatusEl.classList.remove('show');
+
+            document.querySelectorAll('.variant-card').forEach(card => {
+                card.classList.remove('hidden');
+            });
+
+            document.querySelectorAll('.component-section').forEach(section => {
+                section.classList.remove('no-matches');
+            });
+        }
+
+        function clearSearch() {
+            globalSearchInput.value = '';
+            searchClearBtn.style.display = 'none';
+            clearAllFilters();
+        }
+
+        function showFilterStatus(visible, total, query) {
+            filterStatusEl.textContent = `Mostrando ${visible} de ${total} elementos con "${query}"`;
+            filterStatusEl.classList.add('show');
+
+            setTimeout(() => {
+                filterStatusEl.classList.remove('show');
+            }, 3000);
+        }
+
+        // Expand/Collapse All
+        function expandAll(event) {
+            document.querySelectorAll('.component-section').forEach(section => {
+                section.classList.add('expanded');
+            });
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function collapseAll(event) {
+            document.querySelectorAll('.component-section').forEach(section => {
+                section.classList.remove('expanded');
+            });
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // ESC to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Local filter functionality
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                const filterType = e.target.dataset.filter;
+                const filterValue = e.target.dataset.value;
+                const filterGroup = e.target.closest('.filter-group');
+
+                filterGroup.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+
+                const section = e.target.closest('.component-section');
+                const grid = section.querySelector('.variant-grid');
+                const cards = grid.querySelectorAll('.variant-card');
+
+                cards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const cardValue = card.dataset[filterType];
+                        if (cardValue === filterValue) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
