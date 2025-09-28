@@ -27,6 +27,9 @@ export default function RootLayout({
   return (
     <html lang="es-CO">
       <body className="min-h-screen bg-gray-50">
+        <a href="#main-content" className="skip-to-content">
+          Saltar al contenido principal
+        </a>
         {children}
       </body>
     </html>

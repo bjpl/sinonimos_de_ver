@@ -27,14 +27,14 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen" role="main">
       {!isOnline && <OfflineNotice />}
-      
+
       <Hero />
       
-      <section className="px-4 py-8 max-w-6xl mx-auto">
+      <section className="px-4 py-8 max-w-6xl mx-auto" aria-labelledby="community-heading">
         <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">Únete a Nuestra Comunidad</h2>
+          <h2 id="community-heading" className="text-2xl font-bold mb-4">Únete a Nuestra Comunidad</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <WhatsAppCTA 
               title="Grupo Principiantes"
@@ -51,69 +51,75 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mb-6">
-          <div className="flex flex-wrap gap-2 mb-4">
-            <label className="text-sm font-medium">Filtrar por trabajo:</label>
+        <div className="mb-6" role="region" aria-label="Filtros de recursos">
+          <div className="flex flex-wrap gap-2 mb-4" role="group" aria-labelledby="category-filter-label">
+            <span id="category-filter-label" className="text-sm font-medium">Filtrar por trabajo:</span>
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedCategory === 'all' 
-                  ? 'bg-blue-500 text-white' 
-                  : 'bg-gray-200 text-gray-700'
+              aria-pressed={selectedCategory === 'all'}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                selectedCategory === 'all'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Todos
             </button>
             <button
               onClick={() => setSelectedCategory('repartidor')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedCategory === 'repartidor' 
-                  ? 'bg-rappi text-white' 
-                  : 'bg-gray-200 text-gray-700'
+              aria-pressed={selectedCategory === 'repartidor'}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                selectedCategory === 'repartidor'
+                  ? 'bg-rappi text-white shadow-md'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Repartidor
             </button>
             <button
               onClick={() => setSelectedCategory('conductor')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedCategory === 'conductor' 
-                  ? 'bg-uber text-white' 
-                  : 'bg-gray-200 text-gray-700'
+              aria-pressed={selectedCategory === 'conductor'}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                selectedCategory === 'conductor'
+                  ? 'bg-uber text-white shadow-md'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Conductor
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <label className="text-sm font-medium">Nivel:</label>
+          <div className="flex flex-wrap gap-2" role="group" aria-labelledby="level-filter-label">
+            <span id="level-filter-label" className="text-sm font-medium">Nivel:</span>
             <button
               onClick={() => setSelectedLevel('all')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedLevel === 'all' 
-                  ? 'bg-green-500 text-white' 
-                  : 'bg-gray-200 text-gray-700'
+              aria-pressed={selectedLevel === 'all'}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                selectedLevel === 'all'
+                  ? 'bg-green-500 text-white shadow-md'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Todos
             </button>
             <button
               onClick={() => setSelectedLevel('basico')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedLevel === 'basico' 
-                  ? 'bg-green-500 text-white' 
-                  : 'bg-gray-200 text-gray-700'
+              aria-pressed={selectedLevel === 'basico'}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                selectedLevel === 'basico'
+                  ? 'bg-green-500 text-white shadow-md'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Básico
             </button>
             <button
               onClick={() => setSelectedLevel('intermedio')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedLevel === 'intermedio' 
-                  ? 'bg-green-500 text-white' 
-                  : 'bg-gray-200 text-gray-700'
+              aria-pressed={selectedLevel === 'intermedio'}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                selectedLevel === 'intermedio'
+                  ? 'bg-green-500 text-white shadow-md'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Intermedio
