@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hablas Design System - Guía de Estilo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'whatsapp': '#25D366',
+                        'whatsapp-dark': '#128C7E',
+                        'rappi': '#FF4E00',
+                        'didi': '#FFA033',
+                        'uber': '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .color-swatch {
+            transition: transform 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.05);
+        }
+
+        .component-demo {
+            border: 2px dashed #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin: 1rem 0;
+            background: #fafafa;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+
+        .section-header {
+            border-bottom: 3px solid #25D366;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold text-gray-900">
+                    <span class="text-whatsapp">Hablas</span> Design System
+                </h1>
+                <div class="flex gap-4 text-sm">
+                    <a href="#brand" class="text-gray-600 hover:text-whatsapp">Brand</a>
+                    <a href="#colors" class="text-gray-600 hover:text-whatsapp">Colors</a>
+                    <a href="#typography" class="text-gray-600 hover:text-whatsapp">Typography</a>
+                    <a href="#components" class="text-gray-600 hover:text-whatsapp">Components</a>
+                    <a href="#guidelines" class="text-gray-600 hover:text-whatsapp">Guidelines</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Introduction -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8">
+                <h2 class="text-4xl font-bold mb-4 text-gray-900">Bienvenido al Design System de Hablas</h2>
+                <p class="text-xl text-gray-700 mb-6">
+                    Un sistema de diseño centrado en trabajadores colombianos que aprenden inglés para mejorar sus oportunidades laborales.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-rappi">Accesible</div>
+                        <div class="text-sm text-gray-600">WCAG 2.1 AA</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-whatsapp">Offline</div>
+                        <div class="text-sm text-gray-600">PWA Ready</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-blue-500">Responsive</div>
+                        <div class="text-sm text-gray-600">Mobile First</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-purple-500">Fast</div>
+                        <div class="text-sm text-gray-600">Optimized</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Identity -->
+        <section id="brand" class="mb-16">
+            <h2 class="text-3xl font-bold section-header">Identidad de Marca</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Misión</h3>
+                    <p class="text-gray-700">
+                        Empoderar a conductores y domiciliarios colombianos con recursos gratuitos de inglés básico para mejorar sus ingresos y oportunidades laborales en la economía de plataformas.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Valores</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>✓ <strong>Accesibilidad:</strong> Gratis y sin barreras</li>
+                        <li>✓ <strong>Practicidad:</strong> Enfoque en situaciones reales</li>
+                        <li>✓ <strong>Comunidad:</strong> Aprendizaje colaborativo</li>
+                        <li>✓ <strong>Respeto:</strong> Por el tiempo y esfuerzo del usuario</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-xl font-bold mb-4">Audiencia Objetivo</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="border-l-4 border-rappi pl-4">
+                        <h4 class="font-bold mb-2">Domiciliarios</h4>
+                        <p class="text-sm text-gray-600">Repartidores de Rappi, Uber Eats, y plataformas similares que necesitan comunicarse con clientes extranjeros.</p>
+                    </div>
+                    <div class="border-l-4 border-uber pl-4">
+                        <h4 class="font-bold mb-2">Conductores</h4>
+                        <p class="text-sm text-gray-600">Conductores de Uber, DiDi, y otras apps que quieren mejorar su experiencia con pasajeros internacionales.</p>
+                    </div>
+                    <div class="border-l-4 border-whatsapp pl-4">
+                        <h4 class="font-bold mb-2">Comunidad</h4>
+                        <p class="text-sm text-gray-600">Cualquier trabajador colombiano interesado en aprender inglés práctico para mejorar sus oportunidades.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color System -->
+        <section id="colors" class="mb-16">
+            <h2 class="text-3xl font-bold section-header">Sistema de Colores</h2>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-bold mb-4">Colores Primarios</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="color-swatch cursor-pointer">
+                        <div class="bg-whatsapp h-32 rounded-t-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">Aa</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-b-lg shadow">
+                            <h4 class="font-bold">WhatsApp</h4>
+                            <p class="text-sm text-gray-600">#25D366</p>
+                            <p class="text-xs text-gray-500 mt-1">rgb(37, 211, 102)</p>
+                            <p class="text-xs font-medium mt-2">Uso: CTAs principales, íconos de comunidad</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch cursor-pointer">
+                        <div class="bg-rappi h-32 rounded-t-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">Aa</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-b-lg shadow">
+                            <h4 class="font-bold">Rappi</h4>
+                            <p class="text-sm text-gray-600">#FF4E00</p>
+                            <p class="text-xs text-gray-500 mt-1">rgb(255, 78, 0)</p>
+                            <p class="text-xs font-medium mt-2">Uso: Tags de domiciliarios, acentos</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch cursor-pointer">
+                        <div class="bg-uber h-32 rounded-t-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">Aa</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-b-lg shadow">
+                            <h4 class="font-bold">Uber</h4>
+                            <p class="text-sm text-gray-600">#000000</p>
+                            <p class="text-xs text-gray-500 mt-1">rgb(0, 0, 0)</p>
+                            <p class="text-xs font-medium mt-2">Uso: Tags de conductores, texto</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch cursor-pointer">
+                        <div class="bg-didi h-32 rounded-t-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">Aa</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-b-lg shadow">
+                            <h4 class="font-bold">DiDi</h4>
+                            <p class="text-sm text-gray-600">#FFA033</p>
+                            <p class="text-xs text-gray-500 mt-1">rgb(255, 160, 51)</p>
+                            <p class="text-xs font-medium mt-2">Uso: Tags de conductores alternativos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-bold mb-4">Colores de UI</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="text-center">
+                        <div class="bg-gray-900 h-20 rounded-lg mb-2"></div>
+                        <p class="text-sm font-medium">Gray 900</p>
+                        <p class="text-xs text-gray-500">Texto principal</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gray-700 h-20 rounded-lg mb-2"></div>
+                        <p class="text-sm font-medium">Gray 700</p>
+                        <p class="text-xs text-gray-500">Texto secundario</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gray-500 h-20 rounded-lg mb-2"></div>
+                        <p class="text-sm font-medium">Gray 500</p>
+                        <p class="text-xs text-gray-500">Texto terciario</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gray-200 h-20 rounded-lg mb-2"></div>
+                        <p class="text-sm font-medium">Gray 200</p>
+                        <p class="text-xs text-gray-500">Bordes</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gray-50 h-20 rounded-lg mb-2 border"></div>
+                        <p class="text-sm font-medium">Gray 50</p>
+                        <p class="text-xs text-gray-500">Fondo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-xl font-bold mb-4">Semántica de Colores</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                        <h4 class="font-bold text-green-900">Success</h4>
+                        <p class="text-sm text-green-700">Descargas completadas, offline disponible</p>
+                    </div>
+                    <div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                        <h4 class="font-bold text-yellow-900">Warning</h4>
+                        <p class="text-sm text-yellow-700">Información importante, nivel intermedio</p>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                        <h4 class="font-bold text-purple-900">Info</h4>
+                        <p class="text-sm text-purple-700">Contenido offline, features especiales</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section id="typography" class="mb-16">
+            <h2 class="text-3xl font-bold section-header">Tipografía</h2>
+
+            <div class="bg-white rounded-lg p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold mb-4">Familia de Fuentes</h3>
+                <p class="text-gray-700 mb-4">
+                    Usamos el sistema de fuentes nativo para máxima legibilidad y rendimiento en todos los dispositivos:
+                </p>
+                <div class="code-block">
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                    Helvetica, Arial, sans-serif
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold mb-6">Escala de Tamaños</h3>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-4xl font-bold mb-2">Título Principal (H1)</p>
+                        <p class="text-sm text-gray-600">text-3xl sm:text-4xl • font-bold • 36px/48px</p>
+                        <p class="text-sm text-gray-500 mt-1">Uso: Hero headers, página de inicio</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold mb-2">Título de Sección (H2)</p>
+                        <p class="text-sm text-gray-600">text-2xl • font-bold • 24px</p>
+                        <p class="text-sm text-gray-500 mt-1">Uso: Secciones principales de contenido</p>
+                    </div>
+                    <div>
+                        <p class="text-xl font-bold mb-2">Subtítulo (H3)</p>
+                        <p class="text-sm text-gray-600">text-xl • font-bold • 20px</p>
+                        <p class="text-sm text-gray-500 mt-1">Uso: Títulos de subsecciones</p>
+                    </div>
+                    <div>
+                        <p class="text-lg font-bold mb-2">Título de Card (H4)</p>
+                        <p class="text-sm text-gray-600">text-lg • font-bold • 18px</p>
+                        <p class="text-sm text-gray-500 mt-1">Uso: Títulos de recursos y grupos</p>
+                    </div>
+                    <div>
+                        <p class="text-base mb-2">Texto de Cuerpo</p>
+                        <p class="text-sm text-gray-600">text-base • normal • 16px</p>
+                        <p class="text-sm text-gray-500 mt-1">Uso: Descripciones principales, párrafos</p>
+                    </div>
+                    <div>
+                        <p class="text-sm mb-2">Texto Secundario</p>
+                        <p class="text-sm text-gray-600">text-sm • normal • 14px</p>
+                        <p class="text-sm text-gray-500 mt-1">Uso: Metadatos, información adicional</p>
+                    </div>
+                    <div>
+                        <p class="text-xs mb-2">Texto Terciario</p>
+                        <p class="text-sm text-gray-600">text-xs • normal • 12px</p>
+                        <p class="text-sm text-gray-500 mt-1">Uso: Etiquetas, reglas, notas al pie</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-xl font-bold mb-4">Principios Tipográficos</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold mb-2">✓ Hacer</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li>• Usar tamaños grandes y legibles (mínimo 14px para texto)</li>
+                            <li>• Mantener alto contraste (mínimo 4.5:1)</li>
+                            <li>• Usar line-height de 1.5 o mayor</li>
+                            <li>• Limitar ancho de línea (60-80 caracteres)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">✗ Evitar</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li>• Fuentes decorativas para texto largo</li>
+                            <li>• Texto de bajo contraste</li>
+                            <li>• Más de 2-3 tamaños por sección</li>
+                            <li>• Párrafos muy largos sin descanso visual</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components -->
+        <section id="components" class="mb-16">
+            <h2 class="text-3xl font-bold section-header">Componentes</h2>
+
+            <!-- Buttons -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6">Botones</h3>
+
+                <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                    <h4 class="font-bold mb-4">Botón WhatsApp (Principal)</h4>
+                    <div class="component-demo">
+                        <button class="bg-whatsapp text-white font-bold py-4 px-6 rounded-lg shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-3 text-lg">
+                            <span>Unirme al Grupo</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="code-block">
+&lt;button class="btn-whatsapp"&gt;
+    &lt;span&gt;Unirme al Grupo&lt;/span&gt;
+    &lt;!-- Arrow Icon --&gt;
+&lt;/button&gt;</div>
+                    <div class="mt-4 p-4 bg-blue-50 rounded">
+                        <p class="text-sm"><strong>Uso:</strong> CTA principal para unirse a grupos de WhatsApp</p>
+                        <p class="text-sm mt-1"><strong>Accesibilidad:</strong> min-height 44px, touch target 48x48px</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                    <h4 class="font-bold mb-4">Botones de Acción</h4>
+                    <div class="component-demo space-y-4">
+                        <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Descargar
+                        </button>
+                        <button class="bg-green-100 text-green-700 font-medium py-2 px-4 rounded-lg">
+                            ✓ Descargado
+                        </button>
+                        <button class="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h4 class="font-bold mb-4">Filtros y Pills</h4>
+                    <div class="component-demo">
+                        <div class="flex flex-wrap gap-2">
+                            <button class="px-4 py-2 rounded-full text-sm bg-blue-500 text-white">Todos</button>
+                            <button class="px-4 py-2 rounded-full text-sm bg-gray-200 text-gray-700 hover:bg-gray-300">Repartidor</button>
+                            <button class="px-4 py-2 rounded-full text-sm bg-gray-200 text-gray-700 hover:bg-gray-300">Conductor</button>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-blue-50 rounded">
+                        <p class="text-sm"><strong>Uso:</strong> Filtros de contenido, selección de categorías</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6">Cards</h3>
+
+                <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                    <h4 class="font-bold mb-4">Resource Card</h4>
+                    <div class="component-demo">
+                        <div class="bg-white rounded-lg shadow-md p-4 border border-gray-100 max-w-sm">
+                            <div class="flex items-start justify-between mb-3">
+                                <span class="text-2xl">📄</span>
+                                <span class="text-sm bg-purple-100 text-purple-700 px-2 py-1 rounded">
+                                    📱 Offline
+                                </span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Frases para Entregas</h3>
+                            <p class="text-sm text-gray-600 mb-3">Las 50 frases más importantes para domiciliarios</p>
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-rappi text-white">Rappi</span>
+                                <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">Básico</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mb-3">Tamaño: 1.2 MB</div>
+                            <button class="w-full bg-blue-500 text-white font-medium py-2 px-3 rounded-lg">
+                                Descargar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                    <h4 class="font-bold mb-4">WhatsApp Group Card</h4>
+                    <div class="component-demo">
+                        <div class="bg-white rounded-lg shadow-md p-4 border border-gray-100 max-w-sm">
+                            <div class="flex items-start justify-between mb-3">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-lg mb-1">Grupo Principiantes</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Para quienes están empezando con el inglés</p>
+                                    <p class="text-xs text-gray-500">523 miembros</p>
+                                </div>
+                                <svg class="w-8 h-8 text-whatsapp flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.84.5 3.56 1.37 5.04L2 22l5.08-1.33A9.91 9.91 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.21-.51-4.5-1.38l-.32-.2-3.33.87.89-3.24-.21-.34A7.918 7.918 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+                                </svg>
+                            </div>
+                            <button class="w-full bg-whatsapp text-white font-bold py-3 px-4 rounded-lg">
+                                Unirme al Grupo
+                            </button>
+                            <div class="mt-3 text-xs text-gray-500">
+                                <p>📋 Reglas: Respeto, solo inglés para trabajo, no spam</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h4 class="font-bold mb-4">Stat Card</h4>
+                    <div class="component-demo">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-2xl font-bold text-rappi">500+</div>
+                            <div class="text-sm text-gray-600">Frases útiles</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tags and Badges -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6">Tags y Badges</h3>
+
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h4 class="font-bold mb-4">Tag System</h4>
+                    <div class="component-demo">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-rappi text-white">Rappi</span>
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-uber text-white">Uber</span>
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-didi text-white">DiDi</span>
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">Básico</span>
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">Intermedio</span>
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700">General</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-blue-50 rounded">
+                        <p class="text-sm"><strong>Uso:</strong> Categorización de recursos por plataforma y nivel</p>
+                        <p class="text-sm mt-1"><strong>Colores:</strong> Rappi (#FF4E00), Uber (#000000), DiDi (#FFA033)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icons -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6">Sistema de Íconos</h3>
+
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h4 class="font-bold mb-4">Íconos de Tipo de Contenido</h4>
+                    <div class="component-demo">
+                        <div class="grid grid-cols-4 gap-4 text-center">
+                            <div>
+                                <span class="text-4xl">📄</span>
+                                <p class="text-sm mt-2">PDF</p>
+                            </div>
+                            <div>
+                                <span class="text-4xl">🔊</span>
+                                <p class="text-sm mt-2">Audio</p>
+                            </div>
+                            <div>
+                                <span class="text-4xl">🖼️</span>
+                                <p class="text-sm mt-2">Imagen</p>
+                            </div>
+                            <div>
+                                <span class="text-4xl">📹</span>
+                                <p class="text-sm mt-2">Video</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-blue-50 rounded">
+                        <p class="text-sm"><strong>Uso:</strong> Emojis para indicar tipo de recurso de manera universal y reconocible</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layout & Spacing -->
+        <section id="layout" class="mb-16">
+            <h2 class="text-3xl font-bold section-header">Layout y Espaciado</h2>
+
+            <div class="bg-white rounded-lg p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold mb-4">Sistema de Grid</h3>
+                <div class="component-demo">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-whatsapp/10 border-2 border-whatsapp rounded p-4 text-center">
+                            <p class="font-bold">1 columna</p>
+                            <p class="text-sm">Mobile</p>
+                        </div>
+                        <div class="bg-whatsapp/10 border-2 border-whatsapp rounded p-4 text-center">
+                            <p class="font-bold">2 columnas</p>
+                            <p class="text-sm">Tablet</p>
+                        </div>
+                        <div class="bg-whatsapp/10 border-2 border-whatsapp rounded p-4 text-center">
+                            <p class="font-bold">3 columnas</p>
+                            <p class="text-sm">Desktop</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold mb-4">Breakpoints</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="p-3 border">Nombre</th>
+                                <th class="p-3 border">Tamaño</th>
+                                <th class="p-3 border">Uso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-3 border font-medium">xs</td>
+                                <td class="p-3 border">375px+</td>
+                                <td class="p-3 border">Teléfonos pequeños</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border font-medium">sm</td>
+                                <td class="p-3 border">640px+</td>
+                                <td class="p-3 border">Teléfonos grandes</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border font-medium">md</td>
+                                <td class="p-3 border">768px+</td>
+                                <td class="p-3 border">Tablets</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border font-medium">lg</td>
+                                <td class="p-3 border">1024px+</td>
+                                <td class="p-3 border">Desktop pequeño</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border font-medium">xl</td>
+                                <td class="p-3 border">1280px+</td>
+                                <td class="p-3 border">Desktop grande</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-xl font-bold mb-4">Escala de Espaciado</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-1 h-1 bg-whatsapp"></div>
+                        <span class="text-sm font-mono">0.25rem (4px)</span>
+                        <span class="text-sm text-gray-600">- Separación mínima</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-2 h-2 bg-whatsapp"></div>
+                        <span class="text-sm font-mono">0.5rem (8px)</span>
+                        <span class="text-sm text-gray-600">- Espaciado entre tags</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-4 h-4 bg-whatsapp"></div>
+                        <span class="text-sm font-mono">1rem (16px)</span>
+                        <span class="text-sm text-gray-600">- Padding de cards</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-6 h-6 bg-whatsapp"></div>
+                        <span class="text-sm font-mono">1.5rem (24px)</span>
+                        <span class="text-sm text-gray-600">- Margin entre secciones</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-whatsapp"></div>
+                        <span class="text-sm font-mono">3rem (48px)</span>
+                        <span class="text-sm text-gray-600">- Separación de secciones grandes</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Guidelines -->
+        <section id="guidelines" class="mb-16">
+            <h2 class="text-3xl font-bold section-header">Guías de Contenido</h2>
+
+            <div class="bg-white rounded-lg p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold mb-4">Tono y Voz</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold mb-3 text-green-700">✓ Somos</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><strong>Cercanos:</strong> Hablamos de tú, no de usted</li>
+                            <li><strong>Motivadores:</strong> Enfocados en logros y mejoras</li>
+                            <li><strong>Prácticos:</strong> Directos al punto, sin teoría innecesaria</li>
+                            <li><strong>Respetuosos:</strong> Valoramos el tiempo del usuario</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-3 text-red-700">✗ No somos</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><strong>Académicos:</strong> Evitamos jerga técnica</li>
+                            <li><strong>Condescendientes:</strong> No subestimamos al usuario</li>
+                            <li><strong>Complicados:</strong> Sin instrucciones largas</li>
+                            <li><strong>Informales en exceso:</strong> Mantenemos profesionalismo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold mb-4">Ejemplos de Escritura</h3>
+                <div class="space-y-6">
+                    <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                        <p class="text-sm font-bold text-green-900 mb-2">✓ Bien</p>
+                        <p class="text-sm">"Descarga estas frases y úsalas sin datos mientras trabajas"</p>
+                        <p class="text-xs text-green-700 mt-2">Razón: Directo, beneficio claro, enfocado en el usuario</p>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <p class="text-sm font-bold text-red-900 mb-2">✗ Evitar</p>
+                        <p class="text-sm">"Puede descargar el archivo PDF para su posterior consulta offline"</p>
+                        <p class="text-xs text-red-700 mt-2">Razón: Formal, técnico, no centrado en el beneficio</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-xl font-bold mb-4">Accesibilidad</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold mb-3">Principios</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>✓ Touch targets mínimo 44x44px</li>
+                            <li>✓ Contraste mínimo 4.5:1 para texto</li>
+                            <li>✓ Labels claros en todos los controles</li>
+                            <li>✓ Navegación por teclado funcional</li>
+                            <li>✓ Funciona sin JavaScript (progressive enhancement)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-3">Testing</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Probar en conexión lenta (3G)</li>
+                            <li>• Validar con lector de pantalla</li>
+                            <li>• Verificar en modo alto contraste</li>
+                            <li>• Testear zoom al 200%</li>
+                            <li>• Comprobar funcionalidad offline</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources -->
+        <section id="resources" class="mb-16">
+            <h2 class="text-3xl font-bold section-header">Recursos</h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Archivos de Diseño</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-whatsapp hover:underline flex items-center gap-2">
+                                <span>📐</span>
+                                <span>Tailwind Config</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-whatsapp hover:underline flex items-center gap-2">
+                                <span>🎨</span>
+                                <span>Color Palettes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-whatsapp hover:underline flex items-center gap-2">
+                                <span>⚛️</span>
+                                <span>Component Library</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Enlaces Útiles</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://bjpl.github.io/hablas/" class="text-whatsapp hover:underline flex items-center gap-2">
+                                <span>🌐</span>
+                                <span>Sitio en Vivo</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/bjpl/hablas" class="text-whatsapp hover:underline flex items-center gap-2">
+                                <span>💻</span>
+                                <span>Repositorio GitHub</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://tailwindcss.com/docs" class="text-whatsapp hover:underline flex items-center gap-2">
+                                <span>📚</span>
+                                <span>Documentación Tailwind</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Design System v1.0</h3>
+            <p class="text-gray-400 mb-6">Creado con ❤️ para la comunidad Hablas</p>
+            <p class="text-sm text-gray-500">
+                Última actualización: Septiembre 2025
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Copy color code on click
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('click', function() {
+                const colorCode = this.querySelector('.text-sm').textContent;
+                navigator.clipboard.writeText(colorCode);
+
+                const feedback = document.createElement('div');
+                feedback.className = 'fixed top-4 right-4 bg-whatsapp text-white px-4 py-2 rounded-lg shadow-lg';
+                feedback.textContent = `Copiado: ${colorCode}`;
+                document.body.appendChild(feedback);
+
+                setTimeout(() => feedback.remove(), 2000);
+            });
+        });
+    </script>
+</body>
+</html>
