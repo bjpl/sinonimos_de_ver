@@ -1,10 +1,15 @@
 # Hablas Design System
 
-Sistema de diseño completo para la plataforma Hablas - recursos de inglés para trabajadores colombianos.
+> Sistema de diseño completo para la plataforma Hablas - recursos de inglés para trabajadores colombianos móviles.
+
+[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/bjpl/hablas)
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://bjpl.github.io/hablas/)
+[![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.1%20AA-blue.svg)](#-accesibilidad)
 
 ## 📖 Documentación
 
-- **[Style Guide Interactivo](./style-guide.html)** - Guía visual completa con ejemplos en vivo
+- **[Style Guide Interactivo](./style-guide.html)** - Guía visual completa con ejemplos en vivo y componentes interactivos
+- **[Código fuente](https://github.com/bjpl/hablas)** - Repositorio completo en GitHub
 
 ## 🎨 Visión General
 
@@ -16,85 +21,139 @@ El Design System de Hablas está diseñado específicamente para:
 
 ## 🎯 Principios de Diseño
 
-### 1. **Accesibilidad Primero**
-- Touch targets mínimo 44x44px
-- Contraste WCAG 2.1 AA
-- Navegación sin JavaScript
-- Funcionalidad offline
+### 1. **♿ Accesibilidad Primero**
 
-### 2. **Mobile First**
-- Diseñado para pantallas pequeñas
-- Optimizado para una sola mano
-- Consideraciones de conectividad
-- Progressive enhancement
+- ✅ Touch targets mínimo 44x44px (WCAG 2.1 AA)
+- ✅ Contraste de texto 4.5:1 mínimo
+- ✅ Navegación completa por teclado
+- ✅ Semántica HTML5 con landmarks ARIA
+- ✅ Funcionalidad offline-first
 
-### 3. **Claridad y Simplicidad**
-- Jerarquía visual clara
-- Mensajes directos y prácticos
-- Íconos universales
-- Sin jerga técnica
+### 2. **📱 Mobile First**
 
-### 4. **Rendimiento**
-- CSS inline crítico
-- Lazy loading de recursos
-- Caché agresivo
-- Bundle optimizado
+- Diseñado para pantallas desde 375px
+- Optimizado para uso con una sola mano
+- Conexión limitada y datos móviles
+- Progressive enhancement desde HTML base
+
+### 3. **✨ Claridad y Simplicidad**
+
+- Jerarquía visual clara con espaciado consistente
+- Mensajes directos, motivadores y prácticos
+- Íconos universales y reconocibles
+- Lenguaje cercano (tutear), sin jerga técnica
+
+### 4. **⚡ Rendimiento**
+
+- CSS inline crítico para renderizado instantáneo
+- Lazy loading de imágenes y recursos pesados
+- Service worker para caché agresivo
+- Bundle JavaScript optimizado y minificado
 
 ## 🎨 Sistema de Colores
 
-### Colores Primarios
-- **WhatsApp Green**: `#25D366` - CTAs principales, grupos comunitarios
-- **Rappi Orange**: `#FF4E00` - Tags de domiciliarios
-- **Uber Black**: `#000000` - Tags de conductores
-- **DiDi Orange**: `#FFA033` - Tags de conductores alternativos
+### Colores de Marca (Brand Colors)
+
+| Color | Hex | Variable CSS | Uso Principal |
+|-------|-----|--------------|---------------|
+| WhatsApp Green | `#25D366` | `--whatsapp` | CTAs principales, grupos comunitarios |
+| WhatsApp Dark | `#128C7E` | `--whatsapp-dark` | Hover states, emphasis |
+| Rappi Orange | `#FF4E00` | `--rappi` | Tags de domiciliarios |
+| Uber Black | `#000000` | `--uber` | Tags de conductores |
+| DiDi Orange | `#FFA033` | `--didi` | Tags de conductores alternativos |
 
 ### Colores de UI
-- Grises: 50, 100, 200, 500, 600, 700, 900
-- Semánticos: success (green), warning (yellow), info (purple)
+
+| Categoría | Variables | Uso |
+|-----------|-----------|-----|
+| Backgrounds | `--bg-primary`, `--bg-secondary`, `--bg-tertiary` | Fondos principales, tarjetas, y secciones |
+| Text | `--text-primary`, `--text-secondary`, `--text-tertiary` | Jerarquía tipográfica |
+| Borders | `--border-default`, `--border-hover` | Bordes y divisores |
+| Accents | `--accent-blue`, `--accent-green`, `--accent-purple` | Estados semánticos |
 
 ## 📝 Tipografía
 
-### Familia de Fuentes
+### Familia de Fuentes (System Font Stack)
+
 ```css
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-             Helvetica, Arial, sans-serif;
+             Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
 ```
 
-### Escala
-- H1: `text-3xl sm:text-4xl` (36-48px)
-- H2: `text-2xl` (24px)
-- H3: `text-xl` (20px)
-- H4: `text-lg` (18px)
-- Body: `text-base` (16px)
-- Small: `text-sm` (14px)
-- XSmall: `text-xs` (12px)
+**Ventajas:**
+- ⚡ Carga instantánea (sin web fonts)
+- 📱 Nativa en cada plataforma
+- ♿ Optimizada para legibilidad
+
+### Escala Tipográfica
+
+| Elemento | Tamaño Desktop | Tamaño Móvil | Uso |
+|----------|----------------|----------------|-----|
+| H1 | 48px (3rem) | 36px (2.25rem) | Títulos principales de página |
+| H2 | 36px (2.25rem) | 28px (1.75rem) | Títulos de sección |
+| H3 | 24px (1.5rem) | 20px (1.25rem) | Subtítulos |
+| H4 | 20px (1.25rem) | 18px (1.125rem) | Encabezados menores |
+| Body | 16px (1rem) | 16px (1rem) | Texto principal |
+| Small | 14px (0.875rem) | 14px (0.875rem) | Texto secundario |
+| XSmall | 12px (0.75rem) | 12px (0.75rem) | Metadata, captions |
 
 ## 🧩 Componentes Principales
 
-### Botones
-- **WhatsApp CTA**: Botón principal para unirse a grupos
-- **Download Button**: Para descargar recursos
-- **Filter Pills**: Para categorización de contenido
+### Botones (Buttons)
 
-### Cards
-- **Resource Card**: Muestra recursos descargables
-- **WhatsApp Group Card**: Invitación a grupos de WhatsApp
-- **Stat Card**: Estadísticas y métricas
+| Componente | Descripción | Uso |
+|------------|-------------|-----|
+| **WhatsApp CTA** | Botón verde destacado | Unirse a grupos comunitarios |
+| **Download Button** | Botón con ícono de descarga | Descargar recursos offline |
+| **Filter Pills** | Botones pequeños redondeados | Filtrar y categorizar contenido |
 
-### Tags
-- **Platform Tags**: Rappi, Uber, DiDi
-- **Level Tags**: Básico, Intermedio
-- **Status Tags**: Offline, Descargado
+**Requisitos:**
+- Mínimo 44x44px touch target
+- Estados claros: default, hover, focus, active, disabled
+- Focus visible para navegación por teclado
+
+### Tarjetas (Cards)
+
+| Componente | Descripción | Elementos |
+|------------|-------------|----------|
+| **Resource Card** | Tarjeta de recurso descargable | Título, descripción, botón, metadata |
+| **WhatsApp Group Card** | Invitación a grupo | Título, participantes, link de acceso |
+| **Stat Card** | Métricas y estadísticas | Número grande, label, ícono |
+
+### Etiquetas (Tags)
+
+| Tipo | Colores | Ejemplos |
+|------|---------|----------|
+| **Platform Tags** | Brand colors | Rappi, Uber, DiDi |
+| **Level Tags** | Semantic colors | Básico, Intermedio, Avanzado |
+| **Status Tags** | State colors | Offline, Descargado, Nuevo |
 
 ## 📱 Responsive Breakpoints
 
-```javascript
-{
-  xs: '375px',   // Teléfonos pequeños
-  sm: '640px',   // Teléfonos grandes
-  md: '768px',   // Tablets
-  lg: '1024px',  // Desktop pequeño
-  xl: '1280px'   // Desktop grande
+### Breakpoints Principales
+
+| Breakpoint | Min Width | Dispositivo | Notas |
+|------------|-----------|-------------|-------|
+| `xs` | 375px | Teléfonos pequeños | iPhone SE, base mínima |
+| `sm` | 640px | Teléfonos grandes | iPhone 14, Pixel |
+| `md` | 768px | Tablets | iPad Mini, tablets Android |
+| `lg` | 1024px | Desktop pequeño | Laptops, iPad Pro |
+| `xl` | 1280px | Desktop grande | Monitores grandes |
+
+### Mobile-First Media Queries
+
+```css
+/* Base: Móvil (375px+) */
+.component { font-size: 16px; }
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .component { font-size: 18px; }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .component { font-size: 20px; }
 }
 ```
 
@@ -164,44 +223,89 @@ module.exports = {
 
 ## ♿ Accesibilidad
 
-### Requisitos Mínimos
-- Contraste de texto: 4.5:1 (WCAG AA)
-- Touch targets: 44x44px mínimo
-- Alt text en todas las imágenes
-- Labels en todos los controles
-- Navegación por teclado
-- Sin dependencia de JavaScript
+### Estándares de Cumplimiento
 
-### Testing
-- [ ] Validar con lector de pantalla
-- [ ] Probar en modo alto contraste
-- [ ] Verificar zoom al 200%
-- [ ] Comprobar funcionalidad offline
-- [ ] Testear en conexión 3G
+✅ **WCAG 2.1 Nivel AA** - Cumplimiento completo
 
-## 📚 Recursos Adicionales
+### Requisitos Implementados
 
-- [Sitio Web](https://bjpl.github.io/hablas/)
-- [Repositorio GitHub](https://github.com/bjpl/hablas)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
-- [Next.js Docs](https://nextjs.org/docs)
+| Criterio | Requisito | Implementación |
+|----------|-----------|------------------|
+| **Contraste** | 4.5:1 mínimo texto | Todas las combinaciones de color verificadas |
+| **Touch Targets** | 44x44px mínimo | Botones y elementos interactivos |
+| **Semántica** | HTML5 + ARIA | `<header>`, `<main>`, `<nav>`, `role`, `aria-label` |
+| **Teclado** | Navegación completa | Tab, Enter, Escape, flechas |
+| **Foco visible** | Indicador claro | Outline de 2-3px en color brand |
+| **Imágenes** | Alt text descriptivo | Todas las imágenes con contexto |
+| **Labels** | Asociados correctamente | `<label for>` o `aria-label` |
+| **JavaScript** | Funcional sin JS | Progressive enhancement |
 
-## 📝 Contribuir
+### Checklist de Testing
 
-Para contribuir al design system:
+- [ ] **Screen Readers**: NVDA (Windows), VoiceOver (macOS/iOS), TalkBack (Android)
+- [ ] **Teclado**: Tab, Shift+Tab, Enter, Escape, flechas
+- [ ] **Zoom**: Probar 200% y 400% sin pérdida de funcionalidad
+- [ ] **Alto Contraste**: Windows High Contrast Mode
+- [ ] **Color Blindness**: Simuladores Deuteranopia, Protanopia, Tritanopia
+- [ ] **Conexión**: Offline, 3G lenta, intermitente
+- [ ] **Dispositivos Reales**: iPhone SE, Android budget, tablets
 
-1. Sigue los principios establecidos
-2. Mantén la accesibilidad
-3. Documenta nuevos componentes
-4. Actualiza el style guide
-5. Prueba en dispositivos reales
+## 📚 Recursos y Referencias
+
+### Documentación Oficial
+
+- 🌐 [Sitio Web Hablas](https://bjpl.github.io/hablas/)
+- 💻 [Repositorio GitHub](https://github.com/bjpl/hablas)
+- 🎨 [Style Guide Interactivo](./style-guide.html)
+
+### Tecnologías Utilizadas
+
+- [Next.js 14+](https://nextjs.org/docs) - Framework React con SSG
+- [Tailwind CSS](https://tailwindcss.com/docs) - Utility-first CSS
+- [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) - Variables nativas
+
+### Referencias de Accesibilidad
+
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+
+## 🤝 Contribuir
+
+### Cómo Contribuir al Design System
+
+1. **Fork** el repositorio
+2. **Crea una branch**: `git checkout -b feature/nuevo-componente`
+3. **Sigue los principios** de diseño establecidos
+4. **Mantén la accesibilidad** (WCAG 2.1 AA mínimo)
+5. **Documenta** el nuevo componente en el style guide
+6. **Prueba** en dispositivos móviles reales
+7. **Commit**: `git commit -m 'feat: add nuevo componente'`
+8. **Push**: `git push origin feature/nuevo-componente`
+9. **Pull Request** con descripción detallada
+
+### Guía de Estilo para Commits
+
+- `feat:` Nueva funcionalidad
+- `fix:` Corrección de bug
+- `docs:` Cambios en documentación
+- `style:` Formato, punto y coma faltantes
+- `refactor:` Refactorización de código
+- `test:` Añadir tests faltantes
+- `chore:` Tareas de mantenimiento
 
 ## 📄 Licencia
 
-Este design system es parte del proyecto Hablas.
+Este design system es parte del proyecto Hablas y está disponible bajo licencia MIT.
 
 ---
 
-**Versión**: 1.0
+<div align="center">
+
+**Versión**: 1.0.0
 **Última actualización**: Septiembre 2025
-**Mantenido por**: Equipo Hablas
+**Mantenido por**: [Equipo Hablas](https://github.com/bjpl/hablas)
+
+Hecho con ❤️ para trabajadores colombianos móviles
+
+</div>

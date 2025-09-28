@@ -2,10 +2,14 @@
 <html lang="es-CO">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Sistema de diseño Hablas: guía completa con componentes interactivos, paleta de colores, tipografía y patrones para la plataforma de inglés dirigida a trabajadores colombianos.">
+    <meta name="theme-color" content="#25D366">
     <title>Hablas Design System - Guía de Estilo Completa</title>
     <style>
-        * {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -44,13 +48,45 @@
             --shadow-xl: 0 8px 24px rgba(0,0,0,0.15);
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ===== Accessibility Styles ===== */
+        .skip-to-content {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--whatsapp);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0 0 4px 0;
+            z-index: 9999;
+            transition: top 200ms ease-in-out;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+            outline: 3px solid var(--whatsapp-dark);
+            outline-offset: 2px;
+        }
+
+        /* ===== Header Styles ===== */
         .header {
             background: var(--bg-secondary);
             border-bottom: 2px solid var(--border-default);
@@ -59,6 +95,7 @@
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow-sm);
+            transition: box-shadow 200ms ease-in-out;
         }
 
         .header-content {
@@ -172,8 +209,11 @@
             right: var(--spacing-md);
             top: 50%;
             transform: translateY(-50%);
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            min-height: 32px;
+            border: 2px solid transparent;
             border-radius: 50%;
             background: var(--text-tertiary);
             color: white;
@@ -183,12 +223,20 @@
             cursor: pointer;
             font-size: 18px;
             line-height: 1;
-            transition: all 0.2s;
+            transition: all 200ms ease-in-out;
         }
 
-        .search-clear:hover {
+        .search-clear:hover,
+        .search-clear:focus {
             background: var(--whatsapp);
-            transform: translateY(-50%) scale(1.1);
+            transform: translateY(-50%) scale(1.05);
+            outline: none;
+        }
+
+        .search-clear:focus-visible {
+            border-color: var(--whatsapp);
+            outline: 2px solid var(--whatsapp);
+            outline-offset: 2px;
         }
 
         .quick-nav {
@@ -481,9 +529,11 @@
             position: absolute;
             top: var(--spacing-lg);
             right: var(--spacing-lg);
-            width: 40px;
-            height: 40px;
-            border: none;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            min-height: 44px;
+            border: 2px solid transparent;
             background: var(--bg-tertiary);
             border-radius: 50%;
             font-size: 24px;
@@ -491,12 +541,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: all 200ms ease-in-out;
         }
 
-        .modal-close:hover {
+        .modal-close:hover,
+        .modal-close:focus {
             background: var(--whatsapp);
             color: white;
+            border-color: var(--whatsapp-dark);
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        .modal-close:focus-visible {
+            outline: 2px solid var(--whatsapp);
+            outline-offset: 2px;
         }
 
         .toast {
@@ -525,16 +584,18 @@
             right: var(--spacing-xl);
             width: 56px;
             height: 56px;
+            min-width: 44px;
+            min-height: 44px;
             background: var(--whatsapp);
             color: white;
-            border: none;
+            border: 2px solid transparent;
             border-radius: 50%;
             font-size: 24px;
             cursor: pointer;
             box-shadow: var(--shadow-xl);
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.3s;
+            transition: all 300ms ease-in-out;
             z-index: 999;
             display: flex;
             align-items: center;
@@ -546,10 +607,18 @@
             transform: translateY(0);
         }
 
-        .back-to-top:hover {
+        .back-to-top:hover,
+        .back-to-top:focus {
             background: var(--accent-purple);
             transform: translateY(-4px);
             box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        .back-to-top:focus-visible {
+            border-color: white;
+            outline: 3px solid var(--accent-purple);
+            outline-offset: 2px;
         }
 
         .category-badge {
@@ -636,7 +705,9 @@
     </style>
 </head>
 <body>
-    <div class="header">
+    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+
+    <header class="header" role="banner">
         <div class="header-content">
             <div class="header-top">
                 <div>
@@ -646,22 +717,24 @@
                     </h1>
                     <p class="header-subtitle">Sistema de diseño completo con ejemplos interactivos y guías de implementación</p>
                 </div>
-                <div class="view-toggle">
-                    <button class="view-btn active" onclick="expandAll()">Expandir Todo</button>
-                    <button class="view-btn" onclick="collapseAll()">Contraer Todo</button>
+                <div class="view-toggle" role="toolbar" aria-label="Controles de vista">
+                    <button class="view-btn active" onclick="expandAll(event)" aria-label="Expandir todas las secciones">Expandir Todo</button>
+                    <button class="view-btn" onclick="collapseAll(event)" aria-label="Contraer todas las secciones">Contraer Todo</button>
                 </div>
             </div>
-            <div class="nav-bar">
-                <div class="search-container">
-                    <span class="search-icon">🔍</span>
+            <nav class="nav-bar" role="navigation" aria-label="Navegación principal">
+                <div class="search-container" role="search">
+                    <label for="globalSearch" class="search-icon" aria-label="Búsqueda">🔍</label>
                     <input
-                        type="text"
+                        type="search"
                         class="global-search"
                         id="globalSearch"
                         placeholder="Buscar componentes (botón, color, tamaño, whatsapp...)"
                         oninput="filterAllComponents(event)"
+                        aria-label="Buscar en el sistema de diseño"
+                        autocomplete="off"
                     >
-                    <span class="search-clear" id="searchClear" onclick="clearSearch()">×</span>
+                    <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Limpiar búsqueda">×</button>
                 </div>
                 <div class="quick-nav">
                     <a href="#brand-section" class="quick-nav-btn">🎨 Marca</a>
@@ -669,11 +742,11 @@
                     <a href="#typography-section" class="quick-nav-btn">📝 Tipografía</a>
                     <a href="#components-section" class="quick-nav-btn">🧩 Componentes</a>
                 </div>
-            </div>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
+    <main id="main-content" class="container" role="main">
         <!-- Brand Section -->
         <section class="section" id="brand-section">
             <div class="section-header">
@@ -824,10 +897,10 @@
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <!-- Modal -->
-    <div class="modal" id="modal" onclick="closeModal(event)">
+    <div class="modal" id="modal" onclick="closeModal(event)" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal()">×</button>
             <div class="modal-header">
@@ -839,9 +912,9 @@
         </div>
     </div>
 
-    <div class="toast" id="toast"></div>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
-    <div class="filter-status" id="filterStatus"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Volver al inicio de la página">↑</button>
+    <div class="filter-status" id="filterStatus" role="status" aria-live="polite"></div>
 
     <script>
         // Render Colors
@@ -1136,7 +1209,7 @@
         }
 
         // Expand/Collapse All
-        function expandAll() {
+        function expandAll(event) {
             document.querySelectorAll('.component-section').forEach(section => {
                 section.classList.add('expanded');
             });
@@ -1144,7 +1217,7 @@
             event.target.classList.add('active');
         }
 
-        function collapseAll() {
+        function collapseAll(event) {
             document.querySelectorAll('.component-section').forEach(section => {
                 section.classList.remove('expanded');
             });
