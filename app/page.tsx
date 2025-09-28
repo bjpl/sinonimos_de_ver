@@ -59,7 +59,7 @@ export default function Home() {
               aria-pressed={selectedCategory === 'all'}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                 selectedCategory === 'all'
-                  ? 'bg-blue-500 text-white shadow-md'
+                  ? 'bg-accent-blue text-white shadow-md'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -96,7 +96,7 @@ export default function Home() {
               aria-pressed={selectedLevel === 'all'}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                 selectedLevel === 'all'
-                  ? 'bg-green-500 text-white shadow-md'
+                  ? 'bg-accent-green text-white shadow-md'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -107,7 +107,7 @@ export default function Home() {
               aria-pressed={selectedLevel === 'basico'}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                 selectedLevel === 'basico'
-                  ? 'bg-green-500 text-white shadow-md'
+                  ? 'bg-accent-green text-white shadow-md'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -118,7 +118,7 @@ export default function Home() {
               aria-pressed={selectedLevel === 'intermedio'}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                 selectedLevel === 'intermedio'
-                  ? 'bg-green-500 text-white shadow-md'
+                  ? 'bg-accent-green text-white shadow-md'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >

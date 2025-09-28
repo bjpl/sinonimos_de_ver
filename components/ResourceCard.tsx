@@ -36,11 +36,12 @@ export default function ResourceCard({ resource, isDownloaded, onDownload }: Res
   }
 
   const getTagColor = (tag: string) => {
-    if (tag.includes('Rappi')) return 'bg-rappi text-white'
-    if (tag.includes('Uber')) return 'bg-uber text-white'
-    if (tag.includes('DiDi')) return 'bg-didi text-white'
-    if (tag.includes('Básico')) return 'bg-green-100 text-green-800'
-    if (tag.includes('Intermedio')) return 'bg-yellow-100 text-yellow-800'
+    if (tag.includes('Rappi')) return 'tag-rappi'
+    if (tag.includes('Uber')) return 'tag-uber'
+    if (tag.includes('DiDi')) return 'tag-didi'
+    if (tag.includes('Básico')) return 'tag-basico'
+    if (tag.includes('Intermedio')) return 'tag-intermedio'
+    if (tag.includes('Avanzado')) return 'tag-avanzado'
     return 'bg-gray-100 text-gray-700'
   }
 
@@ -67,7 +68,7 @@ export default function ResourceCard({ resource, isDownloaded, onDownload }: Res
       <div className="flex items-start justify-between mb-3">
         <span className="text-2xl">{getTypeIcon(resource.type)}</span>
         {resource.offline && (
-          <span className="text-sm bg-purple-100 text-purple-700 px-2 py-1 rounded">
+          <span className="text-sm tag-offline">
             📱 Offline
           </span>
         )}
@@ -92,9 +93,9 @@ export default function ResourceCard({ resource, isDownloaded, onDownload }: Res
         <button
           onClick={handleDownloadClick}
           className={`flex-1 py-2 px-3 rounded-lg font-medium transition-colors ${
-            isDownloaded 
-              ? 'bg-green-100 text-green-700' 
-              : 'bg-blue-500 text-white hover:bg-blue-600'
+            isDownloaded
+              ? 'bg-accent-green bg-opacity-20 text-accent-green'
+              : 'bg-accent-blue text-white hover:bg-opacity-90'
           }`}
         >
           {isDownloaded ? '✓ Descargado' : 'Descargar'}
