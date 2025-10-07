@@ -76,13 +76,7 @@ This project uses SPARC (Specification, Pseudocode, Architecture, Refinement, Co
 4. **Refinement** - TDD implementation (`sparc tdd`)
 5. **Completion** - Integration (`sparc run integration`)
 
-## Code Style & Best Practices
-
-- **Modular Design**: Files under 500 lines
-- **Environment Safety**: Never hardcode secrets
-- **Test-First**: Write tests before implementation
-- **Clean Architecture**: Separate concerns
-- **Documentation**: Keep updated
+> **Note:** Comprehensive coding standards, testing requirements, security protocols, and architectural guidelines are defined in the [MANDATORY AGENT DIRECTIVES](#agent-operating-instructions) section below.
 
 ## 🚀 Available Agents (54 Total)
 
@@ -344,13 +338,6 @@ Message 4: Write "file.js"
 
 Remember: **Claude Flow coordinates, Claude Code creates!**
 
-# important-instruction-reminders
-Do what has been asked; nothing more, nothing less.
-NEVER create files unless they're absolutely necessary for achieving your goal.
-ALWAYS prefer editing an existing file to creating a new one.
-NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.
-Never save working files, text/mds and tests to the root folder.
-
 ---
 
 ════════════════════════════════════════════════════════
@@ -436,6 +423,13 @@ Never save working files, text/mds and tests to the root folder.
 → Include setup instructions, dependencies, and usage examples
 → Maintain API documentation for all public interfaces
 → Document known limitations and future considerations
+→ File Creation Rules:
+  • Do what has been asked; nothing more, nothing less
+  • NEVER create files unless absolutely necessary for achieving your goal
+  • ALWAYS prefer editing an existing file to creating a new one
+  • NEVER proactively create documentation files (*.md) or README files
+  • Only create documentation when explicitly requested by the user
+  • Never save working files, text/mds, and tests to the root folder
 
 [MANDATORY-13] DEPENDENCY MANAGEMENT
 → Minimize external dependencies; evaluate necessity
