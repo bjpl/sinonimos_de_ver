@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsplash Integration Test - Sinónimos de Ver</title>
+  <link rel="stylesheet" href="../src/styles/images.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .controls {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .control-group {
+      margin-bottom: 1rem;
+    }
+
+    .control-group:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #5568d3;
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .stats {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+
+    .stat-label {
+      color: #666;
+    }
+
+    .stat-value {
+      font-weight: 600;
+      color: #667eea;
+    }
+
+    .test-area {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .test-area h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    #result {
+      min-height: 400px;
+    }
+
+    .synonym-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .synonym-card__image {
+      height: 400px;
+      background: #f0f0f0;
+    }
+
+    .synonym-card__content {
+      padding: 1.5rem;
+    }
+
+    .synonym-card__title {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .synonym-card__definition {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .synonym-card__examples h3 {
+      color: #333;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .synonym-card__examples ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .synonym-card__examples li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #555;
+    }
+
+    .synonym-card__examples li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .error-message {
+      background: #ff6b6b;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .success-message {
+      background: #51cf66;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .synonym-card__image {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Unsplash Integration Test</h1>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="synonymSelect">Select Synonym:</label>
+        <select id="synonymSelect">
+          <option value="observar">Observar</option>
+          <option value="contemplar">Contemplar</option>
+          <option value="divisar">Divisar</option>
+          <option value="vislumbrar">Vislumbrar</option>
+          <option value="avistar">Avistar</option>
+          <option value="otear">Otear</option>
+          <option value="vigilar">Vigilar</option>
+          <option value="examinar">Examinar</option>
+          <option value="inspeccionar">Inspeccionar</option>
+          <option value="escudriñar">Escudriñar</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <button id="loadBtn">Load Image</button>
+        <button id="refreshBtn">Refresh (Clear Cache)</button>
+        <button id="clearCacheBtn">Clear All Cache</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <h2>Cache Statistics</h2>
+      <div id="stats">
+        <div class="stat-item">
+          <span class="stat-label">Cache Size:</span>
+          <span class="stat-value" id="cacheSize">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Max Cache Size:</span>
+          <span class="stat-value" id="maxCacheSize">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">API Calls Used:</span>
+          <span class="stat-value" id="apiCalls">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Remaining Calls:</span>
+          <span class="stat-value" id="remainingCalls">-</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-area">
+      <h2>Result</h2>
+      <div id="result">
+        <p style="color: #666; text-align: center; padding: 2rem;">
+          Select a synonym and click "Load Image" to test the integration.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import unsplashService from '../src/scripts/services/unsplash.js';
+    import { createSynonymCard } from '../src/scripts/components/SynonymImageCard.js';
+    import { getSynonymByWord } from '../src/scripts/utils/synonymData.js';
+
+    const synonymSelect = document.getElementById('synonymSelect');
+    const loadBtn = document.getElementById('loadBtn');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const clearCacheBtn = document.getElementById('clearCacheBtn');
+    const resultDiv = document.getElementById('result');
+
+    let currentCard = null;
+
+    // Update cache statistics
+    function updateStats() {
+      const stats = unsplashService.getCacheStats();
+      document.getElementById('cacheSize').textContent = stats.size;
+      document.getElementById('maxCacheSize').textContent = stats.maxSize;
+      document.getElementById('apiCalls').textContent = stats.requestCount;
+      document.getElementById('remainingCalls').textContent = stats.rateLimitRemaining;
+    }
+
+    // Load synonym image
+    async function loadSynonym() {
+      const selectedSynonym = synonymSelect.value;
+      const synonymData = getSynonymByWord(selectedSynonym);
+
+      if (!synonymData) {
+        resultDiv.innerHTML = '<p class="error-message">Synonym data not found</p>';
+        return;
+      }
+
+      try {
+        loadBtn.disabled = true;
+        loadBtn.textContent = 'Loading...';
+
+        // Destroy previous card
+        if (currentCard) {
+          currentCard.destroy();
+        }
+
+        // Create new card
+        currentCard = await createSynonymCard(synonymData, {
+          showDefinition: true,
+          showExamples: true,
+          showAttribution: true,
+          progressiveLoading: true,
+          preloadNext: false
+        });
+
+        resultDiv.innerHTML = '';
+        resultDiv.appendChild(currentCard.element);
+
+        updateStats();
+
+        // Show success message briefly
+        const success = document.createElement('div');
+        success.className = 'success-message';
+        success.textContent = 'Image loaded successfully!';
+        resultDiv.appendChild(success);
+
+        setTimeout(() => success.remove(), 3000);
+      } catch (error) {
+        console.error('Error loading synonym:', error);
+        resultDiv.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
+      } finally {
+        loadBtn.disabled = false;
+        loadBtn.textContent = 'Load Image';
+      }
+    }
+
+    // Refresh current image
+    async function refreshImage() {
+      if (!currentCard) {
+        alert('Please load an image first');
+        return;
+      }
+
+      try {
+        refreshBtn.disabled = true;
+        refreshBtn.textContent = 'Refreshing...';
+
+        await currentCard.refreshImage();
+        updateStats();
+
+        const success = document.createElement('div');
+        success.className = 'success-message';
+        success.textContent = 'Image refreshed successfully!';
+        resultDiv.appendChild(success);
+
+        setTimeout(() => success.remove(), 3000);
+      } catch (error) {
+        console.error('Error refreshing image:', error);
+        alert('Failed to refresh image: ' + error.message);
+      } finally {
+        refreshBtn.disabled = false;
+        refreshBtn.textContent = 'Refresh (Clear Cache)';
+      }
+    }
+
+    // Clear all cache
+    function clearCache() {
+      if (confirm('Are you sure you want to clear all cached images?')) {
+        unsplashService.clearCache();
+        updateStats();
+
+        const success = document.createElement('div');
+        success.className = 'success-message';
+        success.textContent = 'Cache cleared successfully!';
+        resultDiv.insertBefore(success, resultDiv.firstChild);
+
+        setTimeout(() => success.remove(), 3000);
+      }
+    }
+
+    // Event listeners
+    loadBtn.addEventListener('click', loadSynonym);
+    refreshBtn.addEventListener('click', refreshImage);
+    clearCacheBtn.addEventListener('click', clearCache);
+
+    // Allow Enter key to load
+    synonymSelect.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') loadSynonym();
+    });
+
+    // Initial stats update
+    updateStats();
+
+    // Log initialization
+    console.log('Unsplash Integration Test initialized');
+    console.log('Service:', unsplashService);
+  </script>
+</body>
+</html>
