@@ -1,0 +1,43 @@
+{
+  "synthesis": {
+    "totalQueries": 5,
+    "successfulQueries": 0,
+    "content": {
+      "etymology": [],
+      "cultural": [],
+      "historical": [],
+      "modern": [],
+      "interdisciplinary": []
+    },
+    "citations": [],
+    "verification": {},
+    "summary": ""
+  },
+  "verification": {
+    "totalResults": 5,
+    "citationGrounding": {
+      "total": 0,
+      "verified": 0,
+      "unverified": 0,
+      "details": []
+    },
+    "selfConsistency": {
+      "score": 1,
+      "contradictions": [],
+      "agreements": []
+    },
+    "hallucinationDetection": {
+      "riskLevel": "low",
+      "flags": [],
+      "score": 0
+    },
+    "confidenceScores": {
+      "overall": 0,
+      "byQuery": []
+    }
+  },
+  "metadata": {
+    "generated": "2025-10-14T03:43:09.718Z",
+    "verificationEnabled": true
+  }
+}

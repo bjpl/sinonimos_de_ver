@@ -1,0 +1,357 @@
+{
+  "verbs": {
+    "observar": {
+      "file": "assets/audio/verbs/observar.mp3",
+      "voice": "mx_female_1",
+      "text": "observar"
+    },
+    "contemplar": {
+      "file": "assets/audio/verbs/contemplar.mp3",
+      "voice": "co_male_1",
+      "text": "contemplar"
+    },
+    "avistar": {
+      "file": "assets/audio/verbs/avistar.mp3",
+      "voice": "ar_female_1",
+      "text": "avistar"
+    },
+    "divisar": {
+      "file": "assets/audio/verbs/divisar.mp3",
+      "voice": "mx_male_1",
+      "text": "divisar"
+    },
+    "percibir": {
+      "file": "assets/audio/verbs/percibir.mp3",
+      "voice": "co_female_1",
+      "text": "percibir"
+    },
+    "advertir": {
+      "file": "assets/audio/verbs/advertir.mp3",
+      "voice": "ar_male_1",
+      "text": "advertir"
+    },
+    "notar": {
+      "file": "assets/audio/verbs/notar.mp3",
+      "voice": "us_female_1",
+      "text": "notar"
+    },
+    "vislumbrar": {
+      "file": "assets/audio/verbs/vislumbrar.mp3",
+      "voice": "mx_female_1",
+      "text": "vislumbrar"
+    },
+    "atisbar": {
+      "file": "assets/audio/verbs/atisbar.mp3",
+      "voice": "co_male_1",
+      "text": "atisbar"
+    },
+    "otear": {
+      "file": "assets/audio/verbs/otear.mp3",
+      "voice": "ar_female_1",
+      "text": "otear"
+    },
+    "acechar": {
+      "file": "assets/audio/verbs/acechar.mp3",
+      "voice": "mx_male_1",
+      "text": "acechar"
+    },
+    "columbrar": {
+      "file": "assets/audio/verbs/columbrar.mp3",
+      "voice": "us_male_1",
+      "text": "columbrar"
+    },
+    "constatar": {
+      "file": "assets/audio/verbs/constatar.mp3",
+      "voice": "co_female_1",
+      "text": "constatar"
+    },
+    "entrever": {
+      "file": "assets/audio/verbs/entrever.mp3",
+      "voice": "ar_male_1",
+      "text": "entrever"
+    }
+  },
+  "examples": {
+    "observar": [
+      {
+        "file": "assets/audio/examples/observar_example_1.mp3",
+        "voice": "mx_female_1",
+        "text": "Los científicos observan el comportamiento de las aves migratorias."
+      },
+      {
+        "file": "assets/audio/examples/observar_example_2.mp3",
+        "voice": "mx_female_1",
+        "text": "Observé que estabas preocupado por algo importante."
+      },
+      {
+        "file": "assets/audio/examples/observar_example_3.mp3",
+        "voice": "mx_female_1",
+        "text": "Es necesario observar las normas de seguridad en el laboratorio."
+      }
+    ],
+    "contemplar": [
+      {
+        "file": "assets/audio/examples/contemplar_example_1.mp3",
+        "voice": "co_male_1",
+        "text": "Contemplamos el atardecer desde la playa en silencio."
+      },
+      {
+        "file": "assets/audio/examples/contemplar_example_2.mp3",
+        "voice": "co_male_1",
+        "text": "El artista contemplaba su obra terminada con satisfacción."
+      },
+      {
+        "file": "assets/audio/examples/contemplar_example_3.mp3",
+        "voice": "co_male_1",
+        "text": "Me gusta contemplar las estrellas en las noches despejadas."
+      }
+    ],
+    "avistar": [
+      {
+        "file": "assets/audio/examples/avistar_example_1.mp3",
+        "voice": "ar_female_1",
+        "text": "Los marineros avistaron tierra después de semanas en el mar."
+      },
+      {
+        "file": "assets/audio/examples/avistar_example_2.mp3",
+        "voice": "ar_female_1",
+        "text": "Se logró avistar la ballena jorobada a varios kilómetros de la costa."
+      },
+      {
+        "file": "assets/audio/examples/avistar_example_3.mp3",
+        "voice": "ar_female_1",
+        "text": "Desde la cima, avistamos el valle completo."
+      }
+    ],
+    "divisar": [
+      {
+        "file": "assets/audio/examples/divisar_example_1.mp3",
+        "voice": "mx_male_1",
+        "text": "Apenas podía divisar las montañas a través de la niebla."
+      },
+      {
+        "file": "assets/audio/examples/divisar_example_2.mp3",
+        "voice": "mx_male_1",
+        "text": "Divisamos las luces de la ciudad desde la carretera."
+      },
+      {
+        "file": "assets/audio/examples/divisar_example_3.mp3",
+        "voice": "mx_male_1",
+        "text": "Entre la multitud, divisé a mi amigo agitando la mano."
+      }
+    ],
+    "percibir": [
+      {
+        "file": "assets/audio/examples/percibir_example_1.mp3",
+        "voice": "co_female_1",
+        "text": "Percibo un cambio en tu actitud últimamente."
+      },
+      {
+        "file": "assets/audio/examples/percibir_example_2.mp3",
+        "voice": "co_female_1",
+        "text": "Los animales perciben frecuencias que los humanos no pueden."
+      },
+      {
+        "file": "assets/audio/examples/percibir_example_3.mp3",
+        "voice": "co_female_1",
+        "text": "Percibí cierta tensión en el ambiente de la reunión."
+      }
+    ],
+    "advertir": [
+      {
+        "file": "assets/audio/examples/advertir_example_1.mp3",
+        "voice": "ar_male_1",
+        "text": "Advertí un error en el informe que nadie más había notado."
+      },
+      {
+        "file": "assets/audio/examples/advertir_example_2.mp3",
+        "voice": "ar_male_1",
+        "text": "No advertimos la señal de peligro a tiempo."
+      },
+      {
+        "file": "assets/audio/examples/advertir_example_3.mp3",
+        "voice": "ar_male_1",
+        "text": "Es importante advertir los síntomas tempranos de la enfermedad."
+      }
+    ],
+    "notar": [
+      {
+        "file": "assets/audio/examples/notar_example_1.mp3",
+        "voice": "us_female_1",
+        "text": "¿Notaste que María cambió de peinado?"
+      },
+      {
+        "file": "assets/audio/examples/notar_example_2.mp3",
+        "voice": "us_female_1",
+        "text": "Noté que faltaban algunos documentos de la carpeta."
+      },
+      {
+        "file": "assets/audio/examples/notar_example_3.mp3",
+        "voice": "us_female_1",
+        "text": "Es difícil no notar su entusiasmo por el proyecto."
+      }
+    ],
+    "vislumbrar": [
+      {
+        "file": "assets/audio/examples/vislumbrar_example_1.mp3",
+        "voice": "mx_female_1",
+        "text": "Vislumbro una solución al problema que estamos enfrentando."
+      },
+      {
+        "file": "assets/audio/examples/vislumbrar_example_2.mp3",
+        "voice": "mx_female_1",
+        "text": "En la oscuridad, apenas vislumbraba las siluetas de los árboles."
+      },
+      {
+        "file": "assets/audio/examples/vislumbrar_example_3.mp3",
+        "voice": "mx_female_1",
+        "text": "Los expertos vislumbran cambios importantes en la economía."
+      }
+    ],
+    "atisbar": [
+      {
+        "file": "assets/audio/examples/atisbar_example_1.mp3",
+        "voice": "co_male_1",
+        "text": "Atisbó por la ventana para ver quién había tocado la puerta."
+      },
+      {
+        "file": "assets/audio/examples/atisbar_example_2.mp3",
+        "voice": "co_male_1",
+        "text": "Los investigadores atisban posibles soluciones al enigma."
+      },
+      {
+        "file": "assets/audio/examples/atisbar_example_3.mp3",
+        "voice": "co_male_1",
+        "text": "Atisbaba su futuro con una mezcla de esperanza y temor."
+      }
+    ],
+    "otear": [
+      {
+        "file": "assets/audio/examples/otear_example_1.mp3",
+        "voice": "ar_female_1",
+        "text": "Desde la torre, oteaba el horizonte buscando señales de peligro."
+      },
+      {
+        "file": "assets/audio/examples/otear_example_2.mp3",
+        "voice": "ar_female_1",
+        "text": "El pastor oteaba el rebaño desde lo alto de la colina."
+      },
+      {
+        "file": "assets/audio/examples/otear_example_3.mp3",
+        "voice": "ar_female_1",
+        "text": "Oteamos el valle completo desde el mirador."
+      }
+    ],
+    "acechar": [
+      {
+        "file": "assets/audio/examples/acechar_example_1.mp3",
+        "voice": "mx_male_1",
+        "text": "El felino acechaba a su presa desde la maleza."
+      },
+      {
+        "file": "assets/audio/examples/acechar_example_2.mp3",
+        "voice": "mx_male_1",
+        "text": "Sentía que alguien lo acechaba en la oscuridad."
+      },
+      {
+        "file": "assets/audio/examples/acechar_example_3.mp3",
+        "voice": "mx_male_1",
+        "text": "Los peligros acechan en cada esquina de la ciudad."
+      }
+    ],
+    "columbrar": [
+      {
+        "file": "assets/audio/examples/columbrar_example_1.mp3",
+        "voice": "us_male_1",
+        "text": "A lo lejos columbramos las luces del faro."
+      },
+      {
+        "file": "assets/audio/examples/columbrar_example_2.mp3",
+        "voice": "us_male_1",
+        "text": "Columbraba una solución al dilema que enfrentaban."
+      },
+      {
+        "file": "assets/audio/examples/columbrar_example_3.mp3",
+        "voice": "us_male_1",
+        "text": "Los navegantes columbraron tierra después de días en el mar."
+      }
+    ],
+    "constatar": [
+      {
+        "file": "assets/audio/examples/constatar_example_1.mp3",
+        "voice": "co_female_1",
+        "text": "Los investigadores constataron la presencia de contaminantes en el agua."
+      },
+      {
+        "file": "assets/audio/examples/constatar_example_2.mp3",
+        "voice": "co_female_1",
+        "text": "Constaté personalmente que el informe era preciso."
+      },
+      {
+        "file": "assets/audio/examples/constatar_example_3.mp3",
+        "voice": "co_female_1",
+        "text": "Es necesario constatar los hechos antes de tomar decisiones."
+      }
+    ],
+    "entrever": [
+      {
+        "file": "assets/audio/examples/entrever_example_1.mp3",
+        "voice": "ar_male_1",
+        "text": "Entre las sombras, entrevió una figura moviéndose."
+      },
+      {
+        "file": "assets/audio/examples/entrever_example_2.mp3",
+        "voice": "ar_male_1",
+        "text": "Entreveo las dificultades que enfrentaremos en este proyecto."
+      },
+      {
+        "file": "assets/audio/examples/entrever_example_3.mp3",
+        "voice": "ar_male_1",
+        "text": "A través de las cortinas, entrevimos lo que sucedía adentro."
+      }
+    ]
+  },
+  "voices": {
+    "mx_female_1": {
+      "name": "es-MX-DaliaNeural",
+      "region": "MX",
+      "gender": "female"
+    },
+    "mx_male_1": {
+      "name": "es-MX-JorgeNeural",
+      "region": "MX",
+      "gender": "male"
+    },
+    "co_female_1": {
+      "name": "es-CO-SalomeNeural",
+      "region": "CO",
+      "gender": "female"
+    },
+    "co_male_1": {
+      "name": "es-CO-GonzaloNeural",
+      "region": "CO",
+      "gender": "male"
+    },
+    "ar_female_1": {
+      "name": "es-AR-ElenaNeural",
+      "region": "AR",
+      "gender": "female"
+    },
+    "ar_male_1": {
+      "name": "es-AR-TomasNeural",
+      "region": "AR",
+      "gender": "male"
+    },
+    "us_female_1": {
+      "name": "es-US-PalomaNeural",
+      "region": "US",
+      "gender": "female"
+    },
+    "us_male_1": {
+      "name": "es-US-AlonsoNeural",
+      "region": "US",
+      "gender": "male"
+    }
+  },
+  "generatedAt": "2025-10-27T00:18:04.527117"
+}

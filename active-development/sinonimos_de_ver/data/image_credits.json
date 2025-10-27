@@ -1,0 +1,156 @@
+{
+  "images": {
+    "hero": {
+      "filename": "hero.jpg",
+      "photographer": "Gunnar Ridderström",
+      "photographerUrl": "https://unsplash.com/@gunnarridder",
+      "unsplashUrl": "https://unsplash.com/photos/a-building-with-a-clock-on-the-top-of-it-dCU4eZ_TJ7A",
+      "description": "A building with a clock on the top of it",
+      "color": "#59738c",
+      "width": 5784,
+      "height": 3846
+    },
+    "observar": {
+      "filename": "observar.jpg",
+      "photographer": "Vicky Sim",
+      "photographerUrl": "https://unsplash.com/@vicky49",
+      "unsplashUrl": "https://unsplash.com/photos/womens-white-bucket-hat-GIDAdYmgrvQ",
+      "description": "Photographers at watering hole, Etosha, Namibia",
+      "color": "#262626",
+      "width": 2816,
+      "height": 2112
+    },
+    "contemplar": {
+      "filename": "contemplar.jpg",
+      "photographer": "Robin Jonathan Deutsch",
+      "photographerUrl": "https://unsplash.com/@rodeutsch",
+      "unsplashUrl": "https://unsplash.com/photos/woman-in-black-t-shirt-sitting-on-concrete-bench-during-daytime-ZLro7sAl2bo",
+      "description": "Meditation atop a community park. ",
+      "color": "#262626",
+      "width": 8256,
+      "height": 5504
+    },
+    "divisar": {
+      "filename": "divisar.jpg",
+      "photographer": "John Apps",
+      "photographerUrl": "https://unsplash.com/@johndapps",
+      "unsplashUrl": "https://unsplash.com/photos/distant-mountains-under-a-clear-blue-sky-0JydSGpU6EA",
+      "description": "Distant mountains under a clear blue sky",
+      "color": "#73c0f3",
+      "width": 6016,
+      "height": 4016
+    },
+    "avistar": {
+      "filename": "avistar.jpg",
+      "photographer": "Stefan Pagacik",
+      "photographerUrl": "https://unsplash.com/@stefangp79",
+      "unsplashUrl": "https://unsplash.com/photos/body-of-water-cXeGPhieLw0",
+      "description": "body of water",
+      "color": "#a6c0f3",
+      "width": 4032,
+      "height": 3024
+    },
+    "otear": {
+      "filename": "otear.jpg",
+      "photographer": "DL314 Lin",
+      "photographerUrl": "https://unsplash.com/@dickenslin76",
+      "unsplashUrl": "https://unsplash.com/photos/a-very-tall-building-with-a-big-white-ball-on-top-of-it-DZkSWHqjXuw",
+      "description": "a very tall building with a big white ball on top of it",
+      "color": "#8c8ca6",
+      "width": 7978,
+      "height": 5321
+    },
+    "percibir": {
+      "filename": "percibir.jpg",
+      "photographer": "Charlotte Kirkland",
+      "photographerUrl": "https://unsplash.com/@lottography",
+      "unsplashUrl": "https://unsplash.com/photos/close-up-of-soft-feathers-with-rainbow-light-reflections-qgv-GIrfJ58",
+      "description": "Refracted sunlight on a pigeon's tail feather.",
+      "color": "#8c7359",
+      "width": 5184,
+      "height": 3888
+    },
+    "notar": {
+      "filename": "notar.jpg",
+      "photographer": "GLADYSTONE FONSECA",
+      "photographerUrl": "https://unsplash.com/@gladystonefonseca",
+      "unsplashUrl": "https://unsplash.com/photos/a-man-singing-into-a-microphone-R2Lek8X56y4",
+      "description": "a man singing into a microphone",
+      "color": "#260c0c",
+      "width": 5184,
+      "height": 3456
+    },
+    "advertir": {
+      "filename": "advertir.jpg",
+      "photographer": "Abby Lim",
+      "photographerUrl": "https://unsplash.com/@theabbylim",
+      "unsplashUrl": "https://unsplash.com/photos/brown-wooden-signage-on-brown-wooden-post-AsH8N91MzvA",
+      "description": "maximum loading sign for a bridge",
+      "color": "#262626",
+      "width": 5616,
+      "height": 3744
+    },
+    "constatar": {
+      "filename": "constatar.jpg",
+      "photographer": "wtrsnvc _",
+      "photographerUrl": "https://unsplash.com/@wtrsnvc",
+      "unsplashUrl": "https://unsplash.com/photos/detective-magnifying-glass",
+      "description": "Detective examining evidence with magnifying glass",
+      "color": "#594026",
+      "width": 4000,
+      "height": 3000
+    },
+    "vislumbrar": {
+      "filename": "vislumbrar.jpg",
+      "photographer": "Tima Ilyasov",
+      "photographerUrl": "https://unsplash.com/@red_devil",
+      "unsplashUrl": "https://unsplash.com/photos/red-and-green-light-fixture-YERsYH6A-10",
+      "description": "red and green light fixture",
+      "color": "#262626",
+      "width": 6000,
+      "height": 4000
+    },
+    "atisbar": {
+      "filename": "atisbar.jpg",
+      "photographer": "Y S",
+      "photographerUrl": "https://unsplash.com/@santonii",
+      "unsplashUrl": "https://unsplash.com/photos/brown-tabby-cat-in-white-plastic-container-1cp55ddy2wU",
+      "description": "brown tabby cat in white plastic container",
+      "color": "#737373",
+      "width": 4439,
+      "height": 3551
+    },
+    "entrever": {
+      "filename": "entrever.jpg",
+      "photographer": "Ludovico Ceroseis",
+      "photographerUrl": "https://unsplash.com/@ludovico_06",
+      "unsplashUrl": "https://unsplash.com/photos/a-shadow-of-a-tree-on-a-wall-YKmeVB3zLIY",
+      "description": "La sombra de un árbol en un muro.",
+      "color": "#d9a673",
+      "width": 4896,
+      "height": 3672
+    },
+    "acechar": {
+      "filename": "acechar.jpg",
+      "photographer": "Kaspars Eglitis",
+      "photographerUrl": "https://unsplash.com/@kasparseglitis",
+      "unsplashUrl": "https://unsplash.com/photos/bird-on-white-cctv-camera-BCMCMuTISio",
+      "description": "bird on white CCTV camera",
+      "color": "#a6c0c0",
+      "width": 3089,
+      "height": 2048
+    },
+    "columbrar": {
+      "filename": "columbrar.jpg",
+      "photographer": "Pedro J Conesa",
+      "photographerUrl": "https://unsplash.com/@pedroj_conesa",
+      "unsplashUrl": "https://unsplash.com/photos/a-tall-tower-with-a-light-on-top-of-it-u37Oiqe6A4c",
+      "description": "a tall tower with a light on top of it",
+      "color": "#262626",
+      "width": 6016,
+      "height": 4012
+    }
+  },
+  "downloadedAt": "2025-10-26T23:56:52.209Z",
+  "attribution": "Photos from Unsplash (https://unsplash.com)"
+}
