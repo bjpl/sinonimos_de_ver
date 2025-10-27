@@ -1,0 +1,43 @@
+{
+  "name": "goalie-x",
+  "version": "2.1.0",
+  "description": "Enhanced GOALIE with intelligent query generation - complete replacement for autodidactic research",
+  "type": "module",
+  "main": "goalie-x.mjs",
+  "bin": {
+    "goalie-x": "./goalie-x.mjs"
+  },
+  "scripts": {
+    "start": "node goalie-x-verified.mjs",
+    "analyze": "node goalie-x-verified.mjs analyze",
+    "search": "node goalie-x-verified.mjs search",
+    "search-verified": "node goalie-x-verified.mjs search",
+    "search-basic": "node goalie-x.mjs search",
+    "direct": "node goalie-x.mjs direct",
+    "test": "node goalie-x-verified.mjs analyze \"etymology and cultural history of autodidactic learning\"",
+    "test-search": "node goalie-x-verified.mjs search \"autodidact etymology\" -n 3",
+    "test-search-basic": "node goalie-x.mjs search \"autodidact etymology\" -n 3",
+    "install-global": "npm link",
+    "uninstall-global": "npm unlink"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "commander": "^11.0.0",
+    "dotenv": "^16.3.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "goalie",
+    "research",
+    "etymology",
+    "autodidactic",
+    "perplexity",
+    "ai",
+    "search"
+  ],
+  "author": "Based on rUv's architecture",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

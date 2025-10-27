@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Spacing Scale */
+    --spacing-xs: 0.25rem;   /* 4px */
+    --spacing-sm: 0.5rem;    /* 8px */
+    --spacing-md: 1rem;      /* 16px */
+    --spacing-lg: 1.5rem;    /* 24px */
+    --spacing-xl: 2rem;      /* 32px */
+    --spacing-2xl: 3rem;     /* 48px */
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;    /* 4px */
+    --radius-md: 0.5rem;     /* 8px */
+    --radius-lg: 0.75rem;    /* 12px */
+    --radius-xl: 1rem;       /* 16px */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.10);
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-base: 200ms ease-in-out;
+    --transition-slow: 300ms ease-in-out;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply text-gray-900;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Accessibility: Minimum touch targets (WCAG 2.1 AA) */
+  button,
+  a,
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
+    @apply min-h-touch min-w-touch;
+  }
+
+  /* Skip to content link for keyboard navigation */
+  .skip-to-content {
+    @apply absolute -top-24 left-0 bg-whatsapp text-white px-4 py-2 rounded-br transition-all duration-200;
+    @apply focus:top-0 focus:outline-none focus:ring-2 focus:ring-whatsapp-dark focus:ring-offset-2;
+    z-index: 9999;
+  }
+
+  /* Focus visible styles for keyboard navigation */
+  *:focus-visible {
+    @apply outline-2 outline-whatsapp outline-offset-2;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    @apply ring-2 ring-whatsapp ring-offset-2;
+  }
+}
+
+@layer components {
+  .btn-whatsapp {
+    @apply bg-whatsapp hover:bg-whatsapp-dark text-white font-bold;
+    @apply py-4 px-6 rounded-lg shadow-lg;
+    @apply active:scale-95 transition-all duration-200;
+    @apply flex items-center justify-center gap-3 text-lg;
+    @apply focus-visible:ring-2 focus-visible:ring-whatsapp-dark focus-visible:ring-offset-2;
+    min-height: 52px;
+  }
+
+  .card-resource {
+    @apply bg-white rounded-lg shadow-md p-4;
+    @apply border border-gray-100 hover:shadow-lg;
+    @apply transition-shadow duration-200;
+    @apply focus-within:ring-2 focus-within:ring-whatsapp focus-within:ring-offset-2;
+  }
+
+  .tag-job {
+    @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+    @apply transition-colors duration-150;
+  }
+
+  .tag-rappi {
+    @apply tag-job bg-rappi-light text-rappi;
+  }
+
+  .tag-uber {
+    @apply tag-job bg-uber-light text-uber;
+  }
+
+  .tag-didi {
+    @apply tag-job bg-didi-light text-didi;
+  }
+
+  /* Level and Status Tags */
+  .tag-basico {
+    @apply tag-job bg-green-100 text-green-800;
+  }
+
+  .tag-intermedio {
+    @apply tag-job bg-yellow-100 text-yellow-800;
+  }
+
+  .tag-avanzado {
+    @apply tag-job bg-blue-100 text-blue-800;
+  }
+
+  .tag-offline {
+    @apply tag-job bg-purple-100 text-purple-700;
+  }
+
+  .tag-nuevo {
+    @apply tag-job bg-red-100 text-red-800;
+  }
+}
