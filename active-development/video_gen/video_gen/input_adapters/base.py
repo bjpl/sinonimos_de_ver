@@ -5,8 +5,10 @@ must implement for consistent content ingestion.
 """
 
 from abc import ABC, abstractmethod
-from typing import Any, Optional
+from typing import Any, Optional, Union
+from pathlib import Path
 from dataclasses import dataclass
+import asyncio
 
 from ..shared.models import VideoSet
 
@@ -52,6 +54,41 @@ class InputAdapter(ABC):
         """
         self.name = name
         self.description = description
+
+    def parse(self, source: Union[str, Path], **kwargs) -> VideoSet:
+        """
+        Synchronous wrapper for adapt method.
+        Provides backward compatibility with sync code.
+
+        Args:
+            source: Input source (file path, URL, etc.)
+            **kwargs: Additional adapter-specific parameters
+
+        Returns:
+            VideoSet object ready for processing
+        """
+        # Get or create event loop
+        try:
+            loop = asyncio.get_running_loop()
+            # If we're already in an async context, run in a new thread
+            import concurrent.futures
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(asyncio.run, self.adapt(source, **kwargs))
+                result = future.result()
+        except RuntimeError:
+            # No event loop running, we can create one
+            result = asyncio.run(self.adapt(source, **kwargs))
+
+        # Handle the result
+        if isinstance(result, InputAdapterResult):
+            if result.success and result.video_set:
+                return result.video_set
+            else:
+                raise ValueError(f"Adapter failed: {result.error}")
+        elif isinstance(result, VideoSet):
+            return result
+        else:
+            raise TypeError(f"Unexpected result type: {type(result)}")
 
     @abstractmethod
     async def adapt(self, source: Any, **kwargs) -> InputAdapterResult:

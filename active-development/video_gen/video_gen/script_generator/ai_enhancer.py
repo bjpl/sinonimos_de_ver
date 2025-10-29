@@ -198,10 +198,29 @@ Return ONLY the narration text, nothing else."""
 
             return enhanced
 
+        except ImportError:
+            logger.warning("Anthropic package not installed, returning original script")
+            return script
+        except anthropic.APIConnectionError as e:
+            logger.warning(f"API connection error: {e}, using original script as fallback")
+            self.metrics.record_call(0, 0, success=False)
+            return script
+        except anthropic.RateLimitError as e:
+            logger.warning(f"Rate limit reached: {e}, using original script as fallback")
+            self.metrics.record_call(0, 0, success=False)
+            return script
+        except anthropic.APIStatusError as e:
+            logger.warning(f"API status error: {e}, using original script as fallback")
+            self.metrics.record_call(0, 0, success=False)
+            return script
         except Exception as e:
             # If AI enhancement fails, return original
             logger.warning(f"AI enhancement failed: {e}, using original narration")
             self.metrics.record_call(0, 0, success=False)  # Record failure
+            # In test mode or when mock is enabled, don't fail the whole process
+            import os
+            if os.getenv('TEST_MODE') == 'true' or os.getenv('MOCK_AI') == 'true':
+                logger.info("Test/mock mode detected, returning original script")
             return script
 
     def _validate_enhanced_script(self, enhanced: str, original: str) -> Dict[str, Any]:
