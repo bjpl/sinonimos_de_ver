@@ -54,46 +54,33 @@ def mock_all_external_apis():
                 mock_result.stderr = "Duration: 00:00:05.00, start: 0.000000, bitrate: 128 kb/s"
                 mock_subprocess.return_value = mock_result
 
-                # Mock Path.exists for file checks
-                with patch.object(Path, 'exists') as mock_exists:
-                    mock_exists.return_value = True
+                # Mock requests for document fetching
+                with patch('requests.get') as mock_requests:
+                    mock_response = Mock()
+                    mock_response.status_code = 200
+                    mock_response.text = "# Sample Document\n\nThis is test content."
+                    mock_response.content = b"# Sample Document\n\nThis is test content."
+                    mock_requests.return_value = mock_response
 
-                    # Mock Path.stat for file size checks
-                    with patch.object(Path, 'stat') as mock_stat:
-                        mock_stat_result = Mock()
-                        mock_stat_result.st_size = 1048576  # 1MB
-                        mock_stat_result.st_mtime = 1234567890
-                        mock_stat.return_value = mock_stat_result
+                    # Mock YouTube transcript API (it's a classmethod)
+                    with patch('youtube_transcript_api.YouTubeTranscriptApi') as mock_yt_class:
+                        mock_yt_class.get_transcript = Mock(return_value=[
+                            {'text': 'This is a test transcript.', 'start': 0.0, 'duration': 5.0},
+                            {'text': 'Second part of transcript.', 'start': 5.0, 'duration': 5.0}
+                        ])
 
-                        # Mock requests for document fetching
-                        with patch('requests.get') as mock_requests:
-                            mock_response = Mock()
-                            mock_response.status_code = 200
-                            mock_response.text = "# Sample Document\n\nThis is test content."
-                            mock_response.content = b"# Sample Document\n\nThis is test content."
-                            mock_requests.return_value = mock_response
+                        # Mock PIL Image save to prevent actual file writes
+                        with patch('PIL.Image.Image.save') as mock_img_save:
+                            mock_img_save.return_value = None
 
-                            # Mock YouTube transcript API (it's a classmethod)
-                            with patch('youtube_transcript_api.YouTubeTranscriptApi') as mock_yt_class:
-                                mock_yt_class.get_transcript = Mock(return_value=[
-                                    {'text': 'This is a test transcript.', 'start': 0.0, 'duration': 5.0},
-                                    {'text': 'Second part of transcript.', 'start': 5.0, 'duration': 5.0}
-                                ])
-
-                                # Mock PIL Image save to prevent actual file writes
-                                with patch('PIL.Image.Image.save') as mock_img_save:
-                                    mock_img_save.return_value = None
-
-                                    yield {
-                                        'anthropic': mock_anthropic_class,
-                                        'edge_tts': mock_tts_class,
-                                        'subprocess': mock_subprocess,
-                                        'path_exists': mock_exists,
-                                        'path_stat': mock_stat,
-                                        'requests': mock_requests,
-                                        'youtube_transcript': mock_yt_class,
-                                        'image_save': mock_img_save
-                                    }
+                            yield {
+                                'anthropic': mock_anthropic_class,
+                                'edge_tts': mock_tts_class,
+                                'subprocess': mock_subprocess,
+                                'requests': mock_requests,
+                                'youtube_transcript': mock_yt_class,
+                                'image_save': mock_img_save
+                            }
 
 
 @pytest.fixture
