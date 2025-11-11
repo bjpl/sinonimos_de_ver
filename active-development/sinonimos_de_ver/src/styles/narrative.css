@@ -472,6 +472,7 @@
 }
 
 .highlighted-verb {
+  display: inline;
   background: linear-gradient(180deg, rgba(212, 165, 116, 0.3) 0%, rgba(212, 165, 116, 0.15) 100%);
   padding: 0.1em 0.3em;
   border-radius: 3px;
@@ -479,6 +480,11 @@
   cursor: pointer;
   transition: all 0.2s ease;
   border-bottom: 2px solid rgba(212, 165, 116, 0.5);
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .highlighted-verb:hover {

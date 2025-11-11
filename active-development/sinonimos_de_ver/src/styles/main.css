@@ -987,13 +987,27 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.story-button svg {
-    flex-shrink: 0;
-}
+.story-button svg { flex-shrink: 0; }
 
 .story-label {
     font-size: 0.85rem;
     letter-spacing: 0.02em;
+}
+
+/* Highlighted Verbs - Prevent Word Breaking */
+.highlighted-verb {
+    display: inline;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    font-weight: 600;
+    color: var(--color-primary);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.examples-list .highlighted-verb {
+    font-weight: 700;
 }
 
 @media (max-width: 480px) {
@@ -1001,13 +1015,9 @@ body {
         padding: 0.5rem 0.75rem;
         font-size: 0.85rem;
     }
-
     .story-button svg {
         width: 16px;
         height: 16px;
     }
-
-    .story-label {
-        font-size: 0.75rem;
-    }
+    .story-label { font-size: 0.75rem; }
 }

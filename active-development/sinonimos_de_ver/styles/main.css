@@ -994,6 +994,22 @@ body {
     letter-spacing: 0.02em;
 }
 
+/* Highlighted Verbs - Prevent Word Breaking */
+.highlighted-verb {
+    display: inline;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    font-weight: 600;
+    color: var(--color-primary);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.examples-list .highlighted-verb {
+    font-weight: 700;
+}
+
 @media (max-width: 480px) {
     .story-button {
         padding: 0.5rem 0.75rem;
