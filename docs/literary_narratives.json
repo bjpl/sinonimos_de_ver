@@ -1,0 +1,83 @@
+{
+  "literaryNarratives": [
+    {
+      "verb": "contemplar",
+      "narrativeExperience": {
+        "title": "La Quietud del Amanecer",
+        "parts": [
+          "Desde el balcón de su estudio, el poeta contemplaba las primeras luces del alba mientras se desplegaban sobre los tejados de la ciudad colonial.",
+          "Cada matiz del cielo—del índigo profundo al rosa pálido—merecía su atención sostenida, como si en ese gradiente cromático se ocultara alguna verdad inefable.",
+          "No era simplemente mirar; era un acto de comunión con el momento, una meditación visual que transformaba el espectador en testigo reverente del renacer cotidiano."
+        ],
+        "literaryNote": "La narrativa enfatiza la naturaleza prolongada, atenta y casi meditativa de 'contemplar', diferenciándolo del simple acto de ver mediante la descripción de una observación profunda y reflexiva."
+      }
+    },
+    {
+      "verb": "vislumbrar",
+      "narrativeExperience": {
+        "title": "Entre la Niebla y el Presentimiento",
+        "parts": [
+          "A través de la bruma matinal del puerto, María vislumbró la silueta de un barco que podría ser—aunque no estaba segura—el que traería noticias de su hermano.",
+          "Esa visión imprecisa, más intuición que certeza, le provocó un estremecimiento de esperanza mezclada con ansiedad.",
+          "Así es como vislumbraba también su futuro: entre sombras difusas y promesas apenas perceptibles, anticipando lo que aún no se revelaba por completo."
+        ],
+        "literaryNote": "La narrativa captura la doble naturaleza de 'vislumbrar': ver de manera imprecisa (el barco en la niebla) y anticipar o intuir algo futuro (las noticias, el destino), uniendo ambos sentidos en una experiencia cohesiva."
+      }
+    },
+    {
+      "verb": "atisbar",
+      "narrativeExperience": {
+        "title": "El Arte de la Discreción",
+        "parts": [
+          "Desde su rincón en la biblioteca, Elena atisbaba por encima del borde de su libro las conversaciones secretas entre los académicos, fingiendo desinterés mientras captaba cada palabra.",
+          "Sus ojos, entrenados en el arte de la observación cuidadosa, se movían sutilmente sin delatar su vigilancia.",
+          "Atisbar era su método: mirar sin ser vista, reunir fragmentos de información como quien recoge perlas dispersas, siempre con la cautela de quien sabe que la curiosidad prematura puede ahuyentar la verdad."
+        ],
+        "literaryNote": "La narrativa subraya el carácter cuidadoso y disimulado de 'atisbar', mostrando cómo implica no solo observación meticulosa sino también discreción deliberada, casi clandestina."
+      }
+    },
+    {
+      "verb": "otear",
+      "narrativeExperience": {
+        "title": "El Vigía del Altiplano",
+        "parts": [
+          "Desde lo alto de la torre del campanario, el viejo sacristán oteaba el horizonte andino, escudriñando cada pliegue del valle en busca de señales de la caravana esperada.",
+          "Su posición elevada le otorgaba una perspectiva privilegiada: desde allí, el mundo se desplegaba como un tapiz viviente donde cada movimiento, por diminuto que fuera, captaba su atención escrutadora.",
+          "Otear no era simplemente mirar desde arriba; era ejercer una vigilancia panorámica, transformar la altura en ventaja estratégica para descifrar el paisaje."
+        ],
+        "literaryNote": "La narrativa enfatiza el elemento distintivo de 'otear': la observación escrutadora desde una posición elevada, destacando tanto la ventaja visual como el propósito vigilante de esta acción."
+      }
+    },
+    {
+      "verb": "columbrar",
+      "narrativeExperience": {
+        "title": "Deducción en la Distancia",
+        "parts": [
+          "A lo lejos, entre la polvareda del camino, el detective columbraba algo que podría ser la carreta abandonada, aunque la distancia convertía la certeza en mera conjetura.",
+          "Pero columbrar no era solo percibir imperfectamente; era también deducir, inferir de esa mancha borrosa en el horizonte toda una cadena de acontecimientos posibles.",
+          "Su mente trabajaba sobre lo apenas visible, construyendo teorías a partir de sombras, como quien lee entre líneas de un texto difuso."
+        ],
+        "literaryNote": "La narrativa captura la dualidad de 'columbrar': divisar de manera imprecisa y simultáneamente deducir o inferir, mostrando cómo este verbo une percepción visual limitada con razonamiento interpretativo."
+      }
+    },
+    {
+      "verb": "entrever",
+      "narrativeExperience": {
+        "title": "Fragmentos y Sospechas",
+        "parts": [
+          "A través de la rendija de la puerta entreabierta, Catalina entrevió apenas un fragmento de la escena: un brazo, una sombra que se movía, el destello de algo metálico.",
+          "Esa visión incompleta no le reveló la verdad completa, pero sí le permitió entrever—intuir, sospechar—que algo irregular estaba ocurriendo en aquella habitación.",
+          "Así funciona entrever: ver parcialmente con los ojos mientras la mente completa el cuadro con sospechas y deducciones, transformando lo fragmentario en comprensión tentativa."
+        ],
+        "literaryNote": "La narrativa ejemplifica cómo 'entrever' significa tanto ver de manera incompleta o fragmentaria como sospechar o intuir algo a partir de esa percepción parcial, uniendo observación limitada con inferencia intelectual."
+      }
+    }
+  ],
+  "metadata": {
+    "createdDate": "2025-11-10",
+    "purpose": "Literary narrative experiences for sophisticated Spanish synonyms of 'ver'",
+    "style": "Latin American Spanish literary sophistication",
+    "structure": "Multi-part connected narratives demonstrating nuanced verb usage",
+    "literaryApproach": "Each narrative showcases the specific semantic and contextual distinctions of the verb through elegant storytelling"
+  }
+}
