@@ -65,24 +65,6 @@ export class NarrativeViewer {
               ${this._renderParts()}
             </div>
 
-            <div class="narrative-navigation">
-              <button class="nav-button nav-prev" data-action="prev" ${this.currentPart === 0 ? 'disabled' : ''}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M15 18l-6-6 6-6"/>
-                </svg>
-                Anterior
-              </button>
-              <span class="nav-indicator">
-                Parte ${this.currentPart + 1} de ${this.narrative.parts.length}
-              </span>
-              <button class="nav-button nav-next" data-action="next" ${this.currentPart === this.narrative.parts.length - 1 ? 'disabled' : ''}>
-                Siguiente
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 18l6-6-6-6"/>
-                </svg>
-              </button>
-            </div>
-
             <div class="narrative-note">
               <div class="note-icon">📚</div>
               <div class="note-content">
@@ -247,15 +229,6 @@ export class NarrativeViewer {
     closeBtn.onclick = () => this.close();
     backdrop.onclick = () => this.close();
 
-    const navButtons = this.element.querySelectorAll('.nav-button');
-    navButtons.forEach(btn => {
-      btn.onclick = () => {
-        const action = btn.dataset.action;
-        if (action === 'next') this.nextPart();
-        if (action === 'prev') this.prevPart();
-      };
-    });
-
     const tocItems = this.element.querySelectorAll('.toc-item');
     tocItems.forEach(item => {
       item.onclick = () => {
@@ -389,10 +362,16 @@ export class NarrativeViewer {
 
     if (e.key === 'Escape') {
       this.close();
-    } else if (e.key === 'ArrowLeft') {
-      this.prevPart();
-    } else if (e.key === 'ArrowRight') {
+    } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
       this.nextPart();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      this.prevPart();
+    } else if (e.key >= '1' && e.key <= '9') {
+      // Number keys 1-3 jump to parts
+      const partIndex = parseInt(e.key) - 1;
+      if (partIndex < this.narrative.parts.length) {
+        this.goToPart(partIndex);
+      }
     }
   }
 
@@ -475,13 +454,7 @@ export class NarrativeViewer {
   }
 
   _updateNavigation() {
-    const prevBtn = this.element.querySelector('.nav-prev');
-    const nextBtn = this.element.querySelector('.nav-next');
-    const indicator = this.element.querySelector('.nav-indicator');
-
-    prevBtn.disabled = this.currentPart === 0;
-    nextBtn.disabled = this.currentPart === this.narrative.parts.length - 1;
-    indicator.textContent = `Parte ${this.currentPart + 1} de ${this.narrative.parts.length}`;
+    // Navigation via TOC only - no separate nav buttons
   }
 
   _updateTOC() {
