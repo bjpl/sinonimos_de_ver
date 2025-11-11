@@ -1,0 +1,140 @@
+You are orchestrating a Claude Flow Swarm using Claude Code's Task tool for agent execution.
+
+🎯 OBJECTIVE: For each term marked 'Literary' (context: "literario") in [PROJECT_NAME], elegantly integrate a brief but multi-part narrative experience that appropriately and authentically integrates the synonym.
+
+PROJECT CONTEXT:
+- Project: [sinonimos_de_hablar / sinonimos_de_caminar / etc.]
+- Verb theme: [speech / movement / etc.]
+- Literary terms: [List terms from grep command]
+- Target: [N] narratives
+
+🐝 SWARM CONFIGURATION:
+- Strategy: auto
+- Mode: centralized
+- Max Agents: 4
+- Parallel Execution: MANDATORY
+
+📋 EXECUTE ALL IN ONE MESSAGE:
+
+Task("Literary Researcher", "
+Analyze data/synonyms.json and identify all terms with context='literario'.
+
+For each literary term, document:
+1. Verb and its precise meaning
+2. Current examples and how they're used
+3. Cultural notes and regional usage
+4. Narrative potential - what kind of story would authentically showcase this verb?
+5. Thematic opportunities specific to [PROJECT THEME]
+
+Store findings in structured format at: docs/research/literary_synonyms_analysis.json
+
+Use coordination hooks:
+- BEFORE: npx claude-flow@alpha hooks pre-task --description 'Analyze literary terms'
+- DURING: npx claude-flow@alpha hooks post-edit --memory-key 'swarm/researcher/analysis'
+- AFTER: npx claude-flow@alpha hooks post-task
+", "researcher")
+
+Task("Narrative Writer", "
+Create elegant multi-part narrative experiences for each literary synonym term.
+
+LITERARY TERMS: [List from analysis phase]
+
+REQUIREMENTS per narrative:
+1. Authentically demonstrates the verb in context
+2. Has 3 connected narrative moments (not isolated sentences)
+3. Matches Latin American Spanish literary style
+4. Each part: 60-90 words
+5. Progressive structure (setup → development → reflection)
+6. Showcases nuanced meaning that distinguishes from basic verb
+7. Culturally appropriate settings and characters
+8. Includes literary note explaining the demonstration
+
+FORMAT for each:
+{
+  'verb': 'VERB',
+  'narrativeExperience': {
+    'title': 'Evocative Title',
+    'parts': [
+      'Part 1: Scene establishment',
+      'Part 2: Nuanced usage development',
+      'Part 3: Meta-reflection on meaning'
+    ],
+    'literaryNote': 'How this narrative demonstrates the verb uniquely'
+  }
+}
+
+Save to: docs/literary_narratives.json
+
+Use hooks for coordination throughout work.
+", "coder")
+
+Task("Quality Reviewer", "
+Review narrative experiences for literary quality and authentic integration.
+
+REVIEW CRITERIA (score each 1-10):
+1. Literary sophistication - Elegant prose worthy of Latin American literary tradition
+2. Authentic integration - Verb usage feels natural, not forced
+3. Cultural appropriateness - Fits regional context and literary norms
+4. Semantic precision - Captures nuanced meaning vs. simple alternatives
+5. Multi-part coherence - Parts connect and build progressively
+6. Overall impact - Would this enhance learning?
+
+For each narrative provide:
+- Quality score (1-10)
+- Specific strengths (2-3 points)
+- Suggested improvements (if score <9)
+- Cultural/linguistic accuracy check
+- Final recommendation (approve/revise)
+
+TARGET: 8.5+/10 average across all narratives
+
+Wait for coder to complete, then review docs/literary_narratives.json
+
+Save review to: docs/narrative_quality_review.md
+", "reviewer")
+
+Task("System Architect", "
+Design integration architecture for narrative experiences.
+
+REFERENCE: Study sinonimos_de_ver implementation at:
+- docs/narrative_integration_design.md (architecture reference)
+- components/NarrativeViewer.js (component pattern)
+- services/narrativeProgress.js (progress tracking pattern)
+
+DESIGN DELIVERABLES:
+1. Updated JSON schema with narrativeExperience field
+2. Component architecture (NarrativeViewer design)
+3. UI/UX flow (how users access narratives)
+4. Progress tracking strategy (LocalStorage schema)
+5. Integration approach (story buttons, openNarrative function)
+6. Deployment strategy
+7. Performance targets
+
+Create: docs/narrative_integration_design.md
+
+Use ADR (Architecture Decision Record) format for key decisions.
+", "system-architect")
+
+TodoWrite { todos: [
+  {content: "Initialize narrative integration swarm", status: "completed", activeForm: "Initializing swarm"},
+  {content: "Analyze literary terms for narrative potential", status: "in_progress", activeForm: "Analyzing literary terms"},
+  {content: "Create multi-part narratives for all terms", status: "in_progress", activeForm: "Creating narratives"},
+  {content: "Review narrative quality and authenticity", status: "pending", activeForm: "Reviewing narratives"},
+  {content: "Design integration architecture", status: "in_progress", activeForm: "Designing architecture"},
+  {content: "Integrate narratives into data/synonyms.json", status: "pending", activeForm: "Integrating data"},
+  {content: "Create NarrativeViewer component", status: "pending", activeForm: "Creating component"},
+  {content: "Add story buttons to synonym cards", status: "pending", activeForm: "Adding UI buttons"},
+  {content: "Deploy to GitHub Pages", status: "pending", activeForm: "Deploying"},
+  {content: "Verify live integration", status: "pending", activeForm: "Verifying deployment"}
+]}
+
+---
+
+CUSTOMIZATION INSTRUCTIONS:
+1. Replace [PROJECT_NAME] with actual project name
+2. Replace [N] with actual number of literary terms
+3. List literary terms from grep results
+4. Adjust narrative themes to match verb type (speech, movement, etc.)
+5. Update file paths if project structure differs
+
+REMEMBER: Launch ALL agents in ONE message for parallel execution!
