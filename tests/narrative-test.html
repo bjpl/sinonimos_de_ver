@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrative Integration Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .test-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; }
+        .success { background: #d4edda; border-color: #c3e6cb; }
+        .error { background: #f8d7da; border-color: #f5c6cb; }
+        .info { background: #d1ecf1; border-color: #bee5eb; }
+        pre { background: #f8f9fa; padding: 1rem; border-radius: 4px; overflow-x: auto; }
+        button { padding: 0.5rem 1rem; margin: 0.5rem; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Narrative Integration Test</h1>
+
+    <div class="test-section info">
+        <h2>Test Status</h2>
+        <div id="test-results">Running tests...</div>
+    </div>
+
+    <div class="test-section">
+        <h2>1. Data Loading Test</h2>
+        <button onclick="testDataLoading()">Test Data Loading</button>
+        <div id="data-test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Component Import Test</h2>
+        <button onclick="testComponentImport()">Test Component Import</button>
+        <div id="component-test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Narrative Display Test</h2>
+        <button onclick="testNarrativeDisplay()">Open Test Narrative</button>
+        <div id="display-test-result"></div>
+    </div>
+
+    <script type="module">
+        let synonymsData = [];
+
+        async function testDataLoading() {
+            const resultDiv = document.getElementById('data-test-result');
+            resultDiv.innerHTML = '<p>Loading data...</p>';
+
+            try {
+                const response = await fetch('../data/synonyms.json');
+                synonymsData = await response.json();
+
+                const narrativeCount = synonymsData.filter(s => s.narrativeExperience).length;
+                const narrativeVerbs = synonymsData
+                    .filter(s => s.narrativeExperience)
+                    .map(s => s.verb)
+                    .join(', ');
+
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Data Loading Success</h3>
+                        <p><strong>Total synonyms:</strong> ${synonymsData.length}</p>
+                        <p><strong>With narratives:</strong> ${narrativeCount}</p>
+                        <p><strong>Narrative verbs:</strong> ${narrativeVerbs}</p>
+                    </div>
+                    <pre>${JSON.stringify(synonymsData.find(s => s.verb === 'contemplar')?.narrativeExperience, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Data Loading Failed</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testComponentImport() {
+            const resultDiv = document.getElementById('component-test-result');
+            resultDiv.innerHTML = '<p>Importing component...</p>';
+
+            try {
+                const module = await import('../components/NarrativeViewer.js');
+                const { NarrativeViewer } = module;
+
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Component Import Success</h3>
+                        <p><strong>NarrativeViewer class:</strong> ${typeof NarrativeViewer}</p>
+                        <p><strong>Methods:</strong> render, open, close, goToPart, nextPart, prevPart</p>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Component Import Failed</h3>
+                        <p>${error.message}</p>
+                        <pre>${error.stack}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        async function testNarrativeDisplay() {
+            const resultDiv = document.getElementById('display-test-result');
+
+            try {
+                // Load data if not loaded
+                if (synonymsData.length === 0) {
+                    const response = await fetch('../data/synonyms.json');
+                    synonymsData = await response.json();
+                }
+
+                // Find contemplar
+                const synonym = synonymsData.find(s => s.verb === 'contemplar');
+                if (!synonym || !synonym.narrativeExperience) {
+                    throw new Error('contemplar narrative not found');
+                }
+
+                // Import and create viewer
+                const { NarrativeViewer } = await import('../components/NarrativeViewer.js');
+                const viewer = new NarrativeViewer(synonym, {
+                    showProgress: true,
+                    enableHighlighting: true,
+                    trackCompletion: true
+                });
+
+                viewer.render();
+                viewer.open();
+
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Narrative Viewer Opened</h3>
+                        <p>Check if the full-screen viewer appeared!</p>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Narrative Display Failed</h3>
+                        <p>${error.message}</p>
+                        <pre>${error.stack}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        window.testDataLoading = testDataLoading;
+        window.testComponentImport = testComponentImport;
+        window.testNarrativeDisplay = testNarrativeDisplay;
+
+        // Auto-run data test on load
+        window.addEventListener('load', () => {
+            testDataLoading();
+        });
+    </script>
+</body>
+</html>
