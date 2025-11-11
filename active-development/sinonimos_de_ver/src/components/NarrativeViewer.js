@@ -94,10 +94,14 @@ export class NarrativeViewer {
 
       return `
         <div class="toc-item ${isCurrent ? 'active' : ''} ${isCompleted ? 'completed' : ''}"
-             data-part="${index}">
+             data-part="${index}"
+             role="button"
+             tabindex="0"
+             aria-label="Ir a Parte ${index + 1}"
+             aria-current="${isCurrent ? 'true' : 'false'}">
           <div class="toc-number">${index + 1}</div>
           <div class="toc-label">
-            Parte ${index + 1}
+            <span>Parte ${index + 1}</span>
             ${isCompleted ? '<span class="toc-check">✓</span>' : ''}
           </div>
         </div>
