@@ -6,6 +6,7 @@
 // Load image credits and audio metadata
 let imageCredits = {};
 let audioMetadata = {};
+window.audioMetadata = {}; // Make globally accessible for NarrativeViewer
 
 // Load synonyms data
 let synonymsData = [];
@@ -42,6 +43,8 @@ async function loadData() {
         try {
             const audioResponse = await fetch('data/audio_metadata.json');
             audioMetadata = await audioResponse.json();
+            window.audioMetadata = audioMetadata; // Make globally accessible
+            console.log('✅ Audio metadata loaded:', Object.keys(audioMetadata));
         } catch (err) {
             console.log('Audio not available');
         }

@@ -6,6 +6,7 @@
 // Load image credits and audio metadata
 let imageCredits = {};
 let audioMetadata = {};
+window.audioMetadata = {}; // Make globally accessible for NarrativeViewer
 
 // Load synonyms data
 let synonymsData = [];
@@ -42,6 +43,8 @@ async function loadData() {
         try {
             const audioResponse = await fetch('data/audio_metadata.json');
             audioMetadata = await audioResponse.json();
+            window.audioMetadata = audioMetadata; // Make globally accessible
+            console.log('✅ Audio metadata loaded:', Object.keys(audioMetadata));
         } catch (err) {
             console.log('Audio not available');
         }
@@ -173,19 +176,14 @@ function createCard(synonym, index) {
     card.className = 'synonym-card';
     card.style.animationDelay = `${index * 0.05}s`;
 
-    // Main card click opens modal
     card.onclick = (e) => {
-        // Don't open modal if clicking story button
         if (!e.target.closest('.story-button')) {
             openModal(synonym);
         }
     };
 
-    // Get image credit if available
     const verbKey = synonym.verb;
     const credit = imageCredits?.images?.[verbKey];
-
-    // Check if narrative exists
     const hasNarrative = synonym.narrativeExperience && synonym.narrativeExperience.title;
 
     card.innerHTML = `
@@ -409,32 +407,21 @@ function scrollToContent() {
 
 // Open narrative viewer
 async function openNarrative(verb, event) {
-    // Prevent card click from also firing
-    if (event) {
-        event.stopPropagation();
-    }
+    if (event) event.stopPropagation();
 
-    // Find synonym data
     const synonym = synonymsData.find(s => s.verb === verb);
     if (!synonym || !synonym.narrativeExperience) {
         console.error('Narrative not found for:', verb);
         return;
     }
 
-    // Dynamically import NarrativeViewer
     try {
         const { NarrativeViewer } = await import('../components/NarrativeViewer.js');
-
         const viewer = new NarrativeViewer(synonym, {
             showProgress: true,
             enableHighlighting: true,
-            trackCompletion: true,
-            onClose: () => {
-                // Optional: track analytics
-                console.log('Narrative closed:', verb);
-            }
+            trackCompletion: true
         });
-
         viewer.render();
         viewer.open();
     } catch (error) {
@@ -442,7 +429,6 @@ async function openNarrative(verb, event) {
     }
 }
 
-// Make functions available globally
 window.closeModal = closeModal;
 window.scrollToContent = scrollToContent;
 window.openNarrative = openNarrative;
