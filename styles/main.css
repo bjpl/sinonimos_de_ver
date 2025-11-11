@@ -996,10 +996,11 @@ body {
 
 /* Highlighted Verbs - Prevent Word Breaking */
 .highlighted-verb {
-    display: inline;
-    white-space: nowrap;
-    word-break: keep-all;
-    overflow-wrap: normal;
+    display: inline !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
     font-weight: 600;
     color: var(--color-primary);
     -webkit-box-decoration-break: clone;
@@ -1008,6 +1009,12 @@ body {
 
 .examples-list .highlighted-verb {
     font-weight: 700;
+}
+
+strong.highlighted-verb {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline !important;
 }
 
 @media (max-width: 480px) {
