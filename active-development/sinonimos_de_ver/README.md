@@ -2,15 +2,25 @@
 
 Una herramienta elegante y visual para aprender sinónimos del verbo "ver" en español latinoamericano.
 
+## 📊 Estado Actual
+
+**Estado:** Listo para Producción - Preparado para GitHub Pages
+**Stack:** HTML5, CSS3, JavaScript Vanilla (ES6+)
+**Sinónimos:** 14 verbos visuales sofisticados
+**Audio:** Archivos de pronunciación incluidos
+**Imágenes:** Hospedadas localmente, de Unsplash con atribución completa
+**Dependencias:** Ninguna - funciona completamente offline
+
 ## 🎨 Características
 
 - **14 sinónimos sofisticados** con definiciones matizadas
-- **Imágenes contextuales** de alta calidad (descargadas localmente)
-- **Interfaz elegante** con tipografía refinada
+- **Imágenes contextuales** de alta calidad (descargadas localmente de Unsplash)
+- **Interfaz elegante** con tipografía refinada (Cormorant Garamond + Inter)
 - **Búsqueda y filtros** por formalidad, región y contexto
 - **Ejemplos auténticos** de uso en LATAM
 - **Notas culturales** y variaciones regionales
 - **Sin dependencias de API** - funciona completamente offline
+- **Arquitectura estática** - HTML/CSS/JS puro, no requiere build
 
 ## 📸 Imágenes
 
