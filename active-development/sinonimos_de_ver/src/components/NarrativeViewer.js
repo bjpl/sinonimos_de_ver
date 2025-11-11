@@ -21,6 +21,10 @@ export class NarrativeViewer {
     this.progress = this.options.trackCompletion
       ? narrativeProgress.getProgress(this.data.verb)
       : null;
+
+    // Audio state
+    this.currentAudio = null;
+    this.currentPlayingPart = null;
   }
 
   /**
@@ -158,17 +162,43 @@ export class NarrativeViewer {
           <div class="part-header">
             <div class="part-number">Parte ${index + 1}</div>
             ${audioFile ? `
-              <button class="part-audio-button"
-                      data-audio="${audioFile}"
-                      data-part="${index}"
-                      aria-label="Escuchar Parte ${index + 1}"
-                      title="Escuchar narración">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                </svg>
-              </button>
+              <div class="audio-controls" data-part="${index}">
+                <button class="audio-btn audio-play"
+                        data-audio="${audioFile}"
+                        data-part="${index}"
+                        data-action="play"
+                        aria-label="Reproducir narración"
+                        title="Reproducir">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                </button>
+                <button class="audio-btn audio-pause"
+                        data-audio="${audioFile}"
+                        data-part="${index}"
+                        data-action="pause"
+                        aria-label="Pausar narración"
+                        title="Pausar"
+                        style="display: none;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
+                <button class="audio-btn audio-restart"
+                        data-audio="${audioFile}"
+                        data-part="${index}"
+                        data-action="restart"
+                        aria-label="Reiniciar narración"
+                        title="Reiniciar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                    <path d="M21 3v5h-5"></path>
+                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                    <path d="M3 21v-5h5"></path>
+                  </svg>
+                </button>
+              </div>
             ` : ''}
           </div>
           <p class="part-text">${highlightedText}</p>
@@ -242,13 +272,22 @@ export class NarrativeViewer {
       };
     });
 
-    // Audio buttons for narrative parts
-    const audioButtons = this.element.querySelectorAll('.part-audio-button');
+    // Audio control buttons for narrative parts
+    const audioButtons = this.element.querySelectorAll('.audio-btn');
     audioButtons.forEach(btn => {
       btn.onclick = (e) => {
         e.stopPropagation();
+        const action = btn.dataset.action;
         const audioFile = btn.dataset.audio;
-        this._playPartAudio(audioFile, btn);
+        const partIndex = parseInt(btn.dataset.part);
+
+        if (action === 'play') {
+          this._playPartAudio(audioFile, partIndex);
+        } else if (action === 'pause') {
+          this._pausePartAudio(partIndex);
+        } else if (action === 'restart') {
+          this._restartPartAudio(audioFile, partIndex);
+        }
       };
     });
 
@@ -260,38 +299,85 @@ export class NarrativeViewer {
    * Play narrative part audio
    * @private
    */
-  _playPartAudio(audioFile, buttonElement) {
-    // Use global playAudio function if available
-    if (typeof window.playAudio === 'function') {
-      window.playAudio(audioFile, buttonElement);
-    } else {
-      // Fallback: play audio directly
-      this._playAudioFallback(audioFile, buttonElement);
+  _playPartAudio(audioFile, partIndex) {
+    // Stop any currently playing audio
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this._updateAudioControls(this.currentPlayingPart, 'stopped');
+    }
+
+    // Create new audio
+    this.currentAudio = new Audio(audioFile);
+    this.currentPlayingPart = partIndex;
+
+    // Update UI to show pause button
+    this._updateAudioControls(partIndex, 'playing');
+
+    // Handle audio end
+    this.currentAudio.onended = () => {
+      this._updateAudioControls(partIndex, 'stopped');
+      this.currentAudio = null;
+      this.currentPlayingPart = null;
+    };
+
+    // Play
+    this.currentAudio.play().catch(err => {
+      console.error('Audio playback failed:', err);
+      this._updateAudioControls(partIndex, 'stopped');
+    });
+  }
+
+  /**
+   * Pause narrative part audio
+   * @private
+   */
+  _pausePartAudio(partIndex) {
+    if (this.currentAudio && this.currentPlayingPart === partIndex) {
+      this.currentAudio.pause();
+      this._updateAudioControls(partIndex, 'paused');
     }
   }
 
   /**
-   * Fallback audio player
+   * Restart narrative part audio
    * @private
    */
-  _playAudioFallback(audioFile, buttonElement) {
+  _restartPartAudio(audioFile, partIndex) {
     if (this.currentAudio) {
       this.currentAudio.pause();
       this.currentAudio.currentTime = 0;
     }
+    this._playPartAudio(audioFile, partIndex);
+  }
 
-    this.currentAudio = new Audio(audioFile);
-    buttonElement.classList.add('playing');
+  /**
+   * Update audio control button visibility
+   * @private
+   */
+  _updateAudioControls(partIndex, state) {
+    const controls = this.element.querySelector(`.audio-controls[data-part="${partIndex}"]`);
+    if (!controls) return;
 
-    this.currentAudio.onended = () => {
-      buttonElement.classList.remove('playing');
-      this.currentAudio = null;
-    };
+    const playBtn = controls.querySelector('.audio-play');
+    const pauseBtn = controls.querySelector('.audio-pause');
+    const restartBtn = controls.querySelector('.audio-restart');
 
-    this.currentAudio.play().catch(err => {
-      console.error('Audio playback failed:', err);
-      buttonElement.classList.remove('playing');
-    });
+    if (state === 'playing') {
+      playBtn.style.display = 'none';
+      pauseBtn.style.display = 'flex';
+      restartBtn.classList.add('active');
+      controls.classList.add('playing');
+    } else if (state === 'paused') {
+      playBtn.style.display = 'flex';
+      pauseBtn.style.display = 'none';
+      restartBtn.classList.add('active');
+      controls.classList.remove('playing');
+    } else { // stopped
+      playBtn.style.display = 'flex';
+      pauseBtn.style.display = 'none';
+      restartBtn.classList.remove('active');
+      controls.classList.remove('playing');
+    }
   }
 
   /**
@@ -428,6 +514,12 @@ export class NarrativeViewer {
   }
 
   close() {
+    // Stop any playing audio
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio = null;
+    }
+
     if (this.options.trackCompletion) {
       narrativeProgress.markPartComplete(this.data.verb, this.currentPart);
     }
