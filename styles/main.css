@@ -1015,6 +1015,18 @@ strong.highlighted-verb {
     white-space: nowrap !important;
     word-break: keep-all !important;
     display: inline !important;
+    hyphens: none !important;
+}
+
+/* Force no breaking for all contexts */
+.example-item strong.highlighted-verb,
+.examples-list strong.highlighted-verb,
+.modal-definition .highlighted-verb,
+li .highlighted-verb {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    hyphens: none !important;
+    word-spacing: normal !important;
 }
 
 @media (max-width: 480px) {

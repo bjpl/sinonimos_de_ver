@@ -471,6 +471,12 @@
   hyphens: auto;
 }
 
+/* Override hyphens for highlighted verbs inside part-text */
+.part-text .highlighted-verb {
+  hyphens: none !important;
+  word-spacing: normal !important;
+}
+
 .highlighted-verb {
   display: inline !important;
   background: linear-gradient(180deg, rgba(212, 165, 116, 0.3) 0%, rgba(212, 165, 116, 0.15) 100%);
