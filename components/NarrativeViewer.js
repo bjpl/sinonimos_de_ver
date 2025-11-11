@@ -150,13 +150,46 @@ export class NarrativeViewer {
         ? this._highlightVerb(part)
         : part;
 
+      // Get audio file for this part
+      const audioFile = this._getPartAudioFile(index);
+
       return `
         <div class="narrative-part ${isActive ? 'active' : ''}" data-part="${index}">
-          <div class="part-number">Parte ${index + 1}</div>
+          <div class="part-header">
+            <div class="part-number">Parte ${index + 1}</div>
+            ${audioFile ? `
+              <button class="part-audio-button"
+                      data-audio="${audioFile}"
+                      data-part="${index}"
+                      aria-label="Escuchar Parte ${index + 1}"
+                      title="Escuchar narración">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+              </button>
+            ` : ''}
+          </div>
           <p class="part-text">${highlightedText}</p>
         </div>
       `;
     }).join('');
+  }
+
+  /**
+   * Get audio file path for narrative part
+   * @private
+   */
+  _getPartAudioFile(partIndex) {
+    // Check if audio metadata is loaded globally
+    if (typeof window.audioMetadata === 'undefined') return null;
+
+    const narrativeAudio = window.audioMetadata.narratives?.[this.data.verb];
+    if (!narrativeAudio) return null;
+
+    const partAudio = narrativeAudio.parts?.[partIndex];
+    return partAudio ? partAudio.file : null;
   }
 
   /**
@@ -209,8 +242,56 @@ export class NarrativeViewer {
       };
     });
 
+    // Audio buttons for narrative parts
+    const audioButtons = this.element.querySelectorAll('.part-audio-button');
+    audioButtons.forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const audioFile = btn.dataset.audio;
+        this._playPartAudio(audioFile, btn);
+      };
+    });
+
     this._keyboardHandler = this._handleKeyboard.bind(this);
     document.addEventListener('keydown', this._keyboardHandler);
+  }
+
+  /**
+   * Play narrative part audio
+   * @private
+   */
+  _playPartAudio(audioFile, buttonElement) {
+    // Use global playAudio function if available
+    if (typeof window.playAudio === 'function') {
+      window.playAudio(audioFile, buttonElement);
+    } else {
+      // Fallback: play audio directly
+      this._playAudioFallback(audioFile, buttonElement);
+    }
+  }
+
+  /**
+   * Fallback audio player
+   * @private
+   */
+  _playAudioFallback(audioFile, buttonElement) {
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
+
+    this.currentAudio = new Audio(audioFile);
+    buttonElement.classList.add('playing');
+
+    this.currentAudio.onended = () => {
+      buttonElement.classList.remove('playing');
+      this.currentAudio = null;
+    };
+
+    this.currentAudio.play().catch(err => {
+      console.error('Audio playback failed:', err);
+      buttonElement.classList.remove('playing');
+    });
   }
 
   /**

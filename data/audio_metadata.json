@@ -353,5 +353,169 @@
       "gender": "male"
     }
   },
-  "generatedAt": "2025-10-27T00:18:04.527117"
+  "generatedAt": "2025-11-11T04:32:04.959190",
+  "narratives": {
+    "contemplar": {
+      "title": "La Quietud del Amanecer",
+      "voice": "co_male_1",
+      "parts": [
+        {
+          "partNumber": 1,
+          "file": "assets/audio/narratives/contemplar_part_1.mp3",
+          "voice": "co_male_1",
+          "text": "Desde el balcón de su estudio, el poeta contemplaba las primeras luces del alba mientras se desplegaban sobre los tejados de la ciudad colonial.",
+          "duration": null
+        },
+        {
+          "partNumber": 2,
+          "file": "assets/audio/narratives/contemplar_part_2.mp3",
+          "voice": "co_male_1",
+          "text": "Cada matiz del cielo—del índigo profundo al rosa pálido—merecía su atención sostenida, como si en ese gradiente cromático se ocultara alguna verdad inefable.",
+          "duration": null
+        },
+        {
+          "partNumber": 3,
+          "file": "assets/audio/narratives/contemplar_part_3.mp3",
+          "voice": "co_male_1",
+          "text": "No era simplemente mirar; era un acto de comunión con el momento, una meditación visual que transformaba el espectador en testigo reverente del renacer cotidiano.",
+          "duration": null
+        }
+      ]
+    },
+    "vislumbrar": {
+      "title": "Entre la Niebla y el Presentimiento",
+      "voice": "mx_female_1",
+      "parts": [
+        {
+          "partNumber": 1,
+          "file": "assets/audio/narratives/vislumbrar_part_1.mp3",
+          "voice": "mx_female_1",
+          "text": "A través de la bruma matinal del puerto, María vislumbró la silueta de un barco que podría ser—aunque no estaba segura—el que traería noticias de su hermano.",
+          "duration": null
+        },
+        {
+          "partNumber": 2,
+          "file": "assets/audio/narratives/vislumbrar_part_2.mp3",
+          "voice": "mx_female_1",
+          "text": "Esa visión imprecisa, más intuición que certeza, le provocó un estremecimiento de esperanza mezclada con ansiedad.",
+          "duration": null
+        },
+        {
+          "partNumber": 3,
+          "file": "assets/audio/narratives/vislumbrar_part_3.mp3",
+          "voice": "mx_female_1",
+          "text": "Así es como vislumbraba también su futuro: entre sombras difusas y promesas apenas perceptibles, anticipando lo que aún no se revelaba por completo.",
+          "duration": null
+        }
+      ]
+    },
+    "atisbar": {
+      "title": "El Arte de la Discreción",
+      "voice": "co_male_1",
+      "parts": [
+        {
+          "partNumber": 1,
+          "file": "assets/audio/narratives/atisbar_part_1.mp3",
+          "voice": "co_male_1",
+          "text": "Desde su rincón en la biblioteca, Elena atisbaba por encima del borde de su libro las conversaciones secretas entre los académicos, fingiendo desinterés mientras captaba cada palabra.",
+          "duration": null
+        },
+        {
+          "partNumber": 2,
+          "file": "assets/audio/narratives/atisbar_part_2.mp3",
+          "voice": "co_male_1",
+          "text": "Sus ojos, entrenados en el arte de la observación cuidadosa, se movían sutilmente sin delatar su vigilancia.",
+          "duration": null
+        },
+        {
+          "partNumber": 3,
+          "file": "assets/audio/narratives/atisbar_part_3.mp3",
+          "voice": "co_male_1",
+          "text": "Atisbar era su método: mirar sin ser vista, reunir fragmentos de información como quien recoge perlas dispersas, siempre con la cautela de quien sabe que la curiosidad prematura puede ahuyentar la verdad.",
+          "duration": null
+        }
+      ]
+    },
+    "otear": {
+      "title": "El Vigía del Altiplano",
+      "voice": "ar_female_1",
+      "parts": [
+        {
+          "partNumber": 1,
+          "file": "assets/audio/narratives/otear_part_1.mp3",
+          "voice": "ar_female_1",
+          "text": "Desde lo alto de la torre del campanario, el viejo sacristán oteaba el horizonte andino, escudriñando cada pliegue del valle en busca de señales de la caravana esperada.",
+          "duration": null
+        },
+        {
+          "partNumber": 2,
+          "file": "assets/audio/narratives/otear_part_2.mp3",
+          "voice": "ar_female_1",
+          "text": "Su posición elevada le otorgaba una perspectiva privilegiada: desde allí, el mundo se desplegaba como un tapiz viviente donde cada movimiento, por diminuto que fuera, captaba su atención escrutadora.",
+          "duration": null
+        },
+        {
+          "partNumber": 3,
+          "file": "assets/audio/narratives/otear_part_3.mp3",
+          "voice": "ar_female_1",
+          "text": "Otear no era simplemente mirar desde arriba; era ejercer una vigilancia panorámica, transformar la altura en ventaja estratégica para descifrar el paisaje.",
+          "duration": null
+        }
+      ]
+    },
+    "columbrar": {
+      "title": "Deducción en la Distancia",
+      "voice": "us_male_1",
+      "parts": [
+        {
+          "partNumber": 1,
+          "file": "assets/audio/narratives/columbrar_part_1.mp3",
+          "voice": "us_male_1",
+          "text": "A lo lejos, entre la polvareda del camino, el detective columbraba algo que podría ser la carreta abandonada, aunque la distancia convertía la certeza en mera conjetura.",
+          "duration": null
+        },
+        {
+          "partNumber": 2,
+          "file": "assets/audio/narratives/columbrar_part_2.mp3",
+          "voice": "us_male_1",
+          "text": "Pero columbrar no era solo percibir imperfectamente; era también deducir, inferir de esa mancha borrosa en el horizonte toda una cadena de acontecimientos posibles.",
+          "duration": null
+        },
+        {
+          "partNumber": 3,
+          "file": "assets/audio/narratives/columbrar_part_3.mp3",
+          "voice": "us_male_1",
+          "text": "Su mente trabajaba sobre lo apenas visible, construyendo teorías a partir de sombras, como quien lee entre líneas de un texto difuso.",
+          "duration": null
+        }
+      ]
+    },
+    "entrever": {
+      "title": "Fragmentos y Sospechas",
+      "voice": "ar_male_1",
+      "parts": [
+        {
+          "partNumber": 1,
+          "file": "assets/audio/narratives/entrever_part_1.mp3",
+          "voice": "ar_male_1",
+          "text": "A través de la rendija de la puerta entreabierta, Catalina entrevió apenas un fragmento de la escena: un brazo, una sombra que se movía, el destello de algo metálico.",
+          "duration": null
+        },
+        {
+          "partNumber": 2,
+          "file": "assets/audio/narratives/entrever_part_2.mp3",
+          "voice": "ar_male_1",
+          "text": "Esa visión incompleta no le reveló la verdad completa, pero sí le permitió entrever—intuir, sospechar—que algo irregular estaba ocurriendo en aquella habitación.",
+          "duration": null
+        },
+        {
+          "partNumber": 3,
+          "file": "assets/audio/narratives/entrever_part_3.mp3",
+          "voice": "ar_male_1",
+          "text": "Así funciona entrever: ver parcialmente con los ojos mientras la mente completa el cuadro con sospechas y deducciones, transformando lo fragmentario en comprensión tentativa.",
+          "duration": null
+        }
+      ]
+    }
+  }
 }

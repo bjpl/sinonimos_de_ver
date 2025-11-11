@@ -150,13 +150,46 @@ export class NarrativeViewer {
         ? this._highlightVerb(part)
         : part;
 
+      // Get audio file for this part
+      const audioFile = this._getPartAudioFile(index);
+
       return `
         <div class="narrative-part ${isActive ? 'active' : ''}" data-part="${index}">
-          <div class="part-number">Parte ${index + 1}</div>
+          <div class="part-header">
+            <div class="part-number">Parte ${index + 1}</div>
+            ${audioFile ? `
+              <button class="part-audio-button"
+                      data-audio="${audioFile}"
+                      data-part="${index}"
+                      aria-label="Escuchar Parte ${index + 1}"
+                      title="Escuchar narración">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+              </button>
+            ` : ''}
+          </div>
           <p class="part-text">${highlightedText}</p>
         </div>
       `;
     }).join('');
+  }
+
+  /**
+   * Get audio file path for narrative part
+   * @private
+   */
+  _getPartAudioFile(partIndex) {
+    // Check if audio metadata is loaded globally
+    if (typeof window.audioMetadata === 'undefined') return null;
+
+    const narrativeAudio = window.audioMetadata.narratives?.[this.data.verb];
+    if (!narrativeAudio) return null;
+
+    const partAudio = narrativeAudio.parts?.[partIndex];
+    return partAudio ? partAudio.file : null;
   }
 
   /**
@@ -165,7 +198,7 @@ export class NarrativeViewer {
    */
   _highlightVerb(text) {
     const verb = this.data.verb;
-    const verbRoot = verb.substring(0, verb.length - 2); // Remove -ar, -er, -ir
+    const verbRoot = verb.substring(0, verb.length - 2);
     const regex = new RegExp(`\\b(${verbRoot}\\w*)\\b`, 'gi');
 
     return text.replace(regex, (match) => {
@@ -178,14 +211,12 @@ export class NarrativeViewer {
    * @private
    */
   _attachEventHandlers() {
-    // Close button
     const closeBtn = this.element.querySelector('.narrative-close');
     const backdrop = this.element.querySelector('.narrative-backdrop');
 
     closeBtn.onclick = () => this.close();
     backdrop.onclick = () => this.close();
 
-    // Navigation buttons
     const navButtons = this.element.querySelectorAll('.nav-button');
     navButtons.forEach(btn => {
       btn.onclick = () => {
@@ -195,7 +226,6 @@ export class NarrativeViewer {
       };
     });
 
-    // TOC items
     const tocItems = this.element.querySelectorAll('.toc-item');
     tocItems.forEach(item => {
       item.onclick = () => {
@@ -204,7 +234,6 @@ export class NarrativeViewer {
       };
     });
 
-    // Highlighted verbs
     const highlightedVerbs = this.element.querySelectorAll('.highlighted-verb');
     highlightedVerbs.forEach(span => {
       span.onclick = (e) => {
@@ -213,8 +242,56 @@ export class NarrativeViewer {
       };
     });
 
-    // Keyboard navigation
-    document.addEventListener('keydown', this._handleKeyboard.bind(this));
+    // Audio buttons for narrative parts
+    const audioButtons = this.element.querySelectorAll('.part-audio-button');
+    audioButtons.forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const audioFile = btn.dataset.audio;
+        this._playPartAudio(audioFile, btn);
+      };
+    });
+
+    this._keyboardHandler = this._handleKeyboard.bind(this);
+    document.addEventListener('keydown', this._keyboardHandler);
+  }
+
+  /**
+   * Play narrative part audio
+   * @private
+   */
+  _playPartAudio(audioFile, buttonElement) {
+    // Use global playAudio function if available
+    if (typeof window.playAudio === 'function') {
+      window.playAudio(audioFile, buttonElement);
+    } else {
+      // Fallback: play audio directly
+      this._playAudioFallback(audioFile, buttonElement);
+    }
+  }
+
+  /**
+   * Fallback audio player
+   * @private
+   */
+  _playAudioFallback(audioFile, buttonElement) {
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
+
+    this.currentAudio = new Audio(audioFile);
+    buttonElement.classList.add('playing');
+
+    this.currentAudio.onended = () => {
+      buttonElement.classList.remove('playing');
+      this.currentAudio = null;
+    };
+
+    this.currentAudio.play().catch(err => {
+      console.error('Audio playback failed:', err);
+      buttonElement.classList.remove('playing');
+    });
   }
 
   /**
@@ -261,7 +338,6 @@ export class NarrativeViewer {
     const closeBtn = tooltip.querySelector('.tooltip-close');
     closeBtn.onclick = () => tooltip.remove();
 
-    // Auto-remove after 5 seconds
     setTimeout(() => {
       if (tooltip.parentElement) tooltip.remove();
     }, 5000);
@@ -273,7 +349,6 @@ export class NarrativeViewer {
   goToPart(index) {
     if (index < 0 || index >= this.narrative.parts.length) return;
 
-    // Mark current part as completed if tracking
     if (this.options.trackCompletion && this.currentPart !== index) {
       narrativeProgress.markPartComplete(this.data.verb, this.currentPart);
     }
@@ -284,35 +359,24 @@ export class NarrativeViewer {
     this._updateTOC();
     this._updateProgress();
 
-    // Scroll to active part
     const activePart = this.element.querySelector('.narrative-part.active');
     if (activePart) {
       activePart.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 
-  /**
-   * Go to next part
-   */
   nextPart() {
     if (this.currentPart < this.narrative.parts.length - 1) {
       this.goToPart(this.currentPart + 1);
     }
   }
 
-  /**
-   * Go to previous part
-   */
   prevPart() {
     if (this.currentPart > 0) {
       this.goToPart(this.currentPart - 1);
     }
   }
 
-  /**
-   * Highlight current part
-   * @private
-   */
   _highlightCurrentPart() {
     const parts = this.element.querySelectorAll('.narrative-part');
     parts.forEach((part, index) => {
@@ -324,10 +388,6 @@ export class NarrativeViewer {
     });
   }
 
-  /**
-   * Update navigation buttons
-   * @private
-   */
   _updateNavigation() {
     const prevBtn = this.element.querySelector('.nav-prev');
     const nextBtn = this.element.querySelector('.nav-next');
@@ -338,10 +398,6 @@ export class NarrativeViewer {
     indicator.textContent = `Parte ${this.currentPart + 1} de ${this.narrative.parts.length}`;
   }
 
-  /**
-   * Update table of contents
-   * @private
-   */
   _updateTOC() {
     const tocItems = this.element.querySelectorAll('.toc-item');
     tocItems.forEach((item, index) => {
@@ -353,10 +409,6 @@ export class NarrativeViewer {
     });
   }
 
-  /**
-   * Update progress display
-   * @private
-   */
   _updateProgress() {
     if (!this.options.showProgress) return;
 
@@ -375,16 +427,11 @@ export class NarrativeViewer {
     if (progressText) progressText.textContent = `${completedCount} de ${totalParts} partes leídas`;
   }
 
-  /**
-   * Close narrative viewer
-   */
   close() {
-    // Mark current part as completed before closing
     if (this.options.trackCompletion) {
       narrativeProgress.markPartComplete(this.data.verb, this.currentPart);
     }
 
-    // Fade out animation
     this.element.classList.add('closing');
 
     setTimeout(() => {
@@ -392,27 +439,19 @@ export class NarrativeViewer {
         this.element.parentElement.removeChild(this.element);
       }
 
-      // Remove keyboard listener
-      document.removeEventListener('keydown', this._handleKeyboard);
-
-      // Restore body scroll
+      document.removeEventListener('keydown', this._keyboardHandler);
       document.body.style.overflow = '';
 
-      // Call onClose callback if provided
       if (typeof this.options.onClose === 'function') {
         this.options.onClose();
       }
     }, 300);
   }
 
-  /**
-   * Open narrative viewer
-   */
   open() {
     document.body.appendChild(this.element);
     document.body.style.overflow = 'hidden';
 
-    // Fade in animation
     setTimeout(() => {
       this.element.classList.add('active');
     }, 10);
