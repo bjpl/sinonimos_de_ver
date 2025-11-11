@@ -245,6 +245,20 @@ export class NarrativeViewer {
       };
     });
 
+    // Make narrative parts clickable
+    const narrativeParts = this.element.querySelectorAll('.narrative-part');
+    narrativeParts.forEach((part, index) => {
+      part.onclick = (e) => {
+        // Don't trigger if clicking audio buttons or highlighted verbs
+        if (e.target.closest('.audio-btn') || e.target.closest('.highlighted-verb')) {
+          return;
+        }
+        this.goToPart(index);
+      };
+      // Add cursor pointer to show they're clickable
+      part.style.cursor = 'pointer';
+    });
+
     // Audio control buttons for narrative parts
     const audioButtons = this.element.querySelectorAll('.audio-btn');
     audioButtons.forEach(btn => {
