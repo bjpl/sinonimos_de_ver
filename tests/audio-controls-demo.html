@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Controls Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/narrative.css">
+    <style>
+        body { padding: 2rem; background: #f8f9fa; }
+        .demo-container { max-width: 900px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; }
+        .demo-part { margin: 2rem 0; padding: 2rem; background: white; border: 2px solid #e0e0e0; border-radius: 12px; }
+        .demo-part.active { border-color: #2d3142; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+        h1 { font-family: var(--font-serif); color: #2d3142; margin-bottom: 1rem; }
+        .status { padding: 1rem; background: #d1ecf1; border-radius: 8px; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🎛️ Narrative Audio Controls Demo</h1>
+
+        <div class="status">
+            <strong>Testing:</strong> Play, Pause, and Restart buttons for narrative audio
+        </div>
+
+        <!-- Demo Part 1 -->
+        <div class="demo-part active">
+            <div class="part-header">
+                <div class="part-number">Parte 1</div>
+                <div class="audio-controls" data-part="0">
+                    <button class="audio-btn audio-play"
+                            data-action="play"
+                            onclick="playDemo(this, 0)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </button>
+                    <button class="audio-btn audio-pause"
+                            data-action="pause"
+                            onclick="pauseDemo(this, 0)"
+                            style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                    </button>
+                    <button class="audio-btn audio-restart"
+                            data-action="restart"
+                            onclick="restartDemo(this, 0)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                            <path d="M3 21v-5h5"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <p class="part-text">
+                Desde el balcón de su estudio, el poeta <span class="highlighted-verb">contemplaba</span>
+                las primeras luces del alba mientras se desplegaban sobre los tejados de la ciudad colonial.
+            </p>
+        </div>
+
+        <!-- Demo Part 2 -->
+        <div class="demo-part">
+            <div class="part-header">
+                <div class="part-number">Parte 2</div>
+                <div class="audio-controls" data-part="1">
+                    <button class="audio-btn audio-play" onclick="playDemo(this, 1)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </button>
+                    <button class="audio-btn audio-pause" onclick="pauseDemo(this, 1)" style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                    </button>
+                    <button class="audio-btn audio-restart" onclick="restartDemo(this, 1)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                            <path d="M3 21v-5h5"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <p class="part-text">
+                Cada matiz del cielo—del índigo profundo al rosa pálido—merecía su atención sostenida.
+            </p>
+        </div>
+
+        <div class="status" style="background: #fff3cd; margin-top: 2rem;">
+            <strong>Visual Design:</strong>
+            <ul style="margin: 0.5rem 0 0 1.5rem;">
+                <li>Pill-shaped button group with soft border</li>
+                <li>Play button (▶️) shows by default</li>
+                <li>When playing: Play → Pause, Pause pulses</li>
+                <li>Restart button fades in when audio starts</li>
+                <li>Hover: Buttons scale 1.1×</li>
+                <li>Active state: Blue glow on container</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        let currentPart = null;
+
+        function playDemo(btn, partIndex) {
+            // Stop previous
+            if (currentAudio) {
+                currentAudio.pause();
+                updateControls(currentPart, 'stopped');
+            }
+
+            const controls = btn.closest('.audio-controls');
+            updateControls(partIndex, 'playing');
+            currentPart = partIndex;
+
+            // Simulate audio playback
+            console.log('Playing part', partIndex);
+
+            // For demo: auto-stop after 3 seconds
+            setTimeout(() => {
+                if (currentPart === partIndex) {
+                    updateControls(partIndex, 'stopped');
+                    currentPart = null;
+                }
+            }, 3000);
+        }
+
+        function pauseDemo(btn, partIndex) {
+            updateControls(partIndex, 'paused');
+            console.log('Paused part', partIndex);
+        }
+
+        function restartDemo(btn, partIndex) {
+            console.log('Restart part', partIndex);
+            playDemo(btn, partIndex);
+        }
+
+        function updateControls(partIndex, state) {
+            const controls = document.querySelector(`.audio-controls[data-part="${partIndex}"]`);
+            if (!controls) return;
+
+            const playBtn = controls.querySelector('.audio-play');
+            const pauseBtn = controls.querySelector('.audio-pause');
+            const restartBtn = controls.querySelector('.audio-restart');
+
+            if (state === 'playing') {
+                playBtn.style.display = 'none';
+                pauseBtn.style.display = 'flex';
+                restartBtn.classList.add('active');
+                controls.classList.add('playing');
+            } else if (state === 'paused') {
+                playBtn.style.display = 'flex';
+                pauseBtn.style.display = 'none';
+                restartBtn.classList.add('active');
+                controls.classList.remove('playing');
+            } else { // stopped
+                playBtn.style.display = 'flex';
+                pauseBtn.style.display = 'none';
+                restartBtn.classList.remove('active');
+                controls.classList.remove('playing');
+            }
+        }
+    </script>
+</body>
+</html>
