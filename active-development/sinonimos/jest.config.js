@@ -1,7 +1,15 @@
 /** @type {import('jest').Config} */
-module.exports = {
+export default {
   // Test environment
   testEnvironment: 'node',
+
+  // Enable ES modules support (package.json has "type": "module")
+  transform: {},
+
+  // Module name mapper for absolute imports
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1'
+  },
 
   // Test match patterns
   testMatch: [
@@ -9,18 +17,17 @@ module.exports = {
     '**/tests/**/*.spec.js'
   ],
 
-  // Ignore ES module tests (they use import syntax)
+  // Ignore example tests and duplicate generator directory
   testPathIgnorePatterns: [
     '/node_modules/',
     '/tests/examples/',
-    '/generator/tests/unit/generator-error-handling.test.js',
-    '/generator/tests/unit/unsplash-service.test.js',
-    '/generator/tests/unit/audio-generator.test.js'
+    '/generator/generator/'
   ],
 
   // Coverage configuration
   collectCoverageFrom: [
     'src/**/*.js',
+    'generator/src/**/*.js',
     '!src/**/*.test.js',
     '!src/**/*.spec.js',
     '!**/node_modules/**'

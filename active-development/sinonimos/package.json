@@ -2,14 +2,15 @@
   "name": "sinonimos",
   "version": "1.0.0",
   "description": "Spanish synonyms learning application",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test:unit": "jest tests/unit",
-    "test:integration": "jest tests/integration",
-    "test:e2e": "jest tests/e2e"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest tests/unit",
+    "test:integration": "NODE_OPTIONS=--experimental-vm-modules jest tests/integration",
+    "test:e2e": "NODE_OPTIONS=--experimental-vm-modules jest tests/e2e"
   },
   "keywords": [
     "spanish",

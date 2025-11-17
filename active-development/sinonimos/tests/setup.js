@@ -3,6 +3,8 @@
  * Runs before each test suite
  */
 
+import { jest } from '@jest/globals';
+
 // Global test timeout
 jest.setTimeout(10000);
 
