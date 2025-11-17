@@ -1,0 +1,23 @@
+{
+  "name": "sinonimos-site-generator",
+  "version": "1.0.0",
+  "description": "Static site generator for Spanish synonym learning applications",
+  "type": "module",
+  "main": "src/cli.js",
+  "bin": {
+    "sinonimos-generator": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  },
+  "keywords": [
+    "spanish",
+    "synonyms",
+    "generator",
+    "static-site"
+  ],
+  "author": "",
+  "license": "ISC"
+}
