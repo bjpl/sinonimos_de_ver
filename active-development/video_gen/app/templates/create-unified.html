@@ -642,6 +642,27 @@ function unifiedCreator() {
                 console.log('Input type:', this.inputType);
                 console.log('Input data:', this.inputData);
 
+                // Smart detection: Auto-set inputMethod if not specified (direct /create access)
+                if (!this.inputMethod) {
+                    console.log('⚡ Auto-detecting input method...');
+                    if (this.inputType === 'url') {
+                        if (this.inputData.url && this.inputData.url.includes('youtube')) {
+                            this.inputMethod = 'youtube';
+                            console.log('✅ Detected: YouTube video');
+                        } else {
+                            this.inputMethod = 'document';
+                            console.log('✅ Detected: Document URL');
+                        }
+                    } else if (this.inputType === 'file' || this.inputType === 'text') {
+                        this.inputMethod = 'document';
+                        console.log('✅ Detected: Document content');
+                    } else {
+                        // Fallback to document for unknown types
+                        this.inputMethod = 'document';
+                        console.log('⚠️ Unknown type, defaulting to document');
+                    }
+                }
+
                 // Determine which API endpoint to use based on input method
                 if (this.inputMethod === 'youtube' || (this.inputType === 'url' && this.inputData.url.includes('youtube'))) {
                     endpoint = '/api/parse/youtube';
